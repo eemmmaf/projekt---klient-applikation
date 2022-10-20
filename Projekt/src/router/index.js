@@ -8,6 +8,7 @@ import SingleCategory from "../views/SingleCategoryView.vue";
 import AddCategory from "../views/AddCategoryView.vue";
 import SearchView from "../views/SearchView.vue";
 import Login from "../views/LoginView.vue";
+import AddUser from "../views/AddUserView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -115,6 +116,18 @@ const router = createRouter({
       path: "/login",
       name: "login",
       component: Login
+    },
+    {
+      path: "/adduser",
+      name: "adduser",
+      component: AddUser,
+      beforeEnter: (to, from, next) => {
+        if(localStorage.getItem("token")){
+          next()
+        }else{
+          next('/login');
+        }
+      }
     }
   ],
 });

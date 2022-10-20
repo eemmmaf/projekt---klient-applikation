@@ -2,21 +2,23 @@
 import { RouterLink, RouterView } from "vue-router";
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
+import Aside from './components/Aside.vue';
 
 
 export default {
     components: {
         Header,
         RouterView,
-        Footer
+        Footer,
+        Aside
     }
 }
 
 </script>
 
 <template>
-
-    <Header />
+        <Header />
+        <Aside />
     <main>
         <RouterView />
     </main>
@@ -24,6 +26,7 @@ export default {
 </template>
 
 <script>
+
 </script>
 
 <style scoped>

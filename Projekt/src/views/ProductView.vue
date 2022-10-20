@@ -6,32 +6,32 @@
         </div>
 
         <!--Sortera efter namn-->
-        <button @click='toggle = !toggle' class="p-2 border-solid border-2 border-light-pink">Sortera <i
+        <button @click='toggle = !toggle' class="p-2 border-solid border-2 border-light-pink bg-white">Sortera <i
                 class="fa-solid fa-chevron-down"></i></button>
         <div class="flex gap-x-2 mt-3">
             <button v-show='toggle' @click="sortByName(products)"
-                class="p-2 border-solid border-2 border-light-pink shadow-md hover:bg-main-color">Namn A-Ö</button>
+                class="p-2 border-solid border-2 border-light-pink shadow-md hover:bg-main-color bg-white">Namn A-Ö</button>
 
             <!--ID-->
             <button v-show='toggle' @click="sortById(products)"
-                class="p-2 border-solid border-2 border-light-pink shadow-md hover:bg-main-color">ID</button>
+                class="p-2 border-solid border-2 border-light-pink shadow-md hover:bg-main-color bg-white">ID</button>
 
             <!--Pris-->
             <button v-show='toggle' @click="sortByPrice(products)"
-                class="p-2 border-solid border-2 border-light-pink shadow-md hover:bg-main-color">Pris(stigande)</button>
+                class="p-2 border-solid border-2 border-light-pink shadow-md hover:bg-main-color bg-white">Pris(stigande)</button>
 
             <!--antal-->
             <button v-show='toggle' @click="sortByQuantity(products)"
-                class="p-2 border-solid border-2 border-light-pink shadow-md hover:bg-main-color">Antal</button>
+                class="p-2 border-solid border-2 border-light-pink shadow-md hover:bg-main-color bg-white">Antal</button>
 
             <!--Kategori-->
             <button v-show='toggle' @click="sortByCategory(products)"
-                class="p-2 border-solid border-2 border-light-pink shadow-md hover:bg-main-color">Kategori</button>
+                class="p-2 border-solid border-2 border-light-pink shadow-md hover:bg-main-color bg-white">Kategori</button>
 
         </div>
 
         <!--Tabell där kategorierna skrivs ut-->
-        <table class="table-auto border-collapse border-solid border-2 border-light-pink mt-5 w-full text-center">
+        <table class="table-auto border-collapse border-solid border-2 border-light-pink mt-5 w-full text-center bg-white shadow-sm">
             <thead class="bg-main-color font-headings">
                 <tr>
                     <th>ID</th>

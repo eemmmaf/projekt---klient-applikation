@@ -2,12 +2,8 @@
     <div class="container max-w-screen-md mt-5">
         <h2 class="font-headings text-xxl text-center md:text-left mb-5 font-bold">Ändra kategori
         </h2>
-        <div class="underline mb-4 text-content">
-            <router-link to="/categories">Se alla kategorier <i class="fa-solid fa-arrow-left underline"></i>
-            </router-link>
-        </div>
         <!--Kontroll om en kategori hittas. Skriver ut nedan om det hittas-->
-        <div class="border-solid border-2 p-5" v-if="category">
+        <div class="border-solid border-2 p-5 bg-white shadow-sm" v-if="category">
             <form class="mt-2" @submit.prevent="updateCategory(category)">
                 <div class="text-base font-content font-bold text-dark-color" v-if="success">
                     {{success}} <i class="fa-solid fa-circle-check text-green-600"></i>

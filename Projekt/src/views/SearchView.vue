@@ -43,7 +43,7 @@ export default {
     //Göra en GET till produkterna och jämföra kanske?
     async mounted() {
         this.token = localStorage.getItem('token');
-        const resp = await fetch("http://localhost:8000/api/products/search/" + this.name , {
+        const resp = await fetch("http://localhost:8000/api/products/search/" + this.name, {
             method: 'GET',
             headers: {
                 "Content-type": "application/json",
@@ -53,6 +53,7 @@ export default {
         });
         const data = await resp.json();
         this.result = data;
+
     }
 }
 </script>

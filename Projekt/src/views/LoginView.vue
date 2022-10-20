@@ -1,45 +1,49 @@
 <template>
-    <!--Email-->
-    <form class="shadow-lg py-8 px-7 bg-main-color md:max-w-md md:container mt-20 rounded">
-        <h1 class="text-center text-white text-xl font-bold">Logga in på MellisProffsen</h1>
-        <!--Skriver ut felmeddelande om inloggning misslyckas-->
-        <div v-if="errorMessage">
-            <p class="text-white text-center mt-3 text-base font-bold">
-                {{errorMessage}}
-            </p>
-        </div>
-        <div class="mt-7">
-            <label for="email" class="text-white text-base">Email</label><br>
-            <input v-model="email" type="email" name="mail" id="email" class="w-full shadow-sm py-1.5 px-1"><br>
-            <!--Skriver ut meddelande om inte email är ifyllt-->
-            <div v-if="emptyEmail">
-                <p class="text-white mt-3 text-sm font-content">
-                    <i class="fa-solid fa-circle-exclamation"></i>
-                    {{emptyEmail}}
+    <div class="bg-main-color h-screen">
+        <!--Email-->
+        <form
+            class="shadow-lg py-8 px-7 bg-white md:max-w-md md:container rounded text-dark-color border-solid border-2 border-main-color">
+            <h1 class="text-center font-headings text-xl font-bold">Logga in på Matbolaget</h1>
+            <!--Skriver ut felmeddelande om inloggning misslyckas-->
+            <div v-if="errorMessage">
+                <p class="text-error text-center mt-3 text-base font-bold font-conent">
+                    {{errorMessage}}
                 </p>
             </div>
-        </div>
+            <div class="mt-7">
+                <label for="email" class="text-dark-color text-base">Email</label><br>
+                <input v-model="email" type="email" name="mail" id="email"
+                    class="w-full shadow-sm py-1.5 px-1 border-solid border-2 border-light-color rounded"><br>
+                <!--Skriver ut meddelande om inte email är ifyllt-->
+                <div v-if="emptyEmail">
+                    <p class="text-error mt-3 text-sm font-content">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        {{emptyEmail}}
+                    </p>
+                </div>
+            </div>
 
-        <!--Lösenord-->
-        <div class="mt-9">
-            <label for="email" class="text-white text-base">Lösenord</label><br>
-            <input type="password" v-model="password" name="password" id="password"
-                class="w-full shadow-sm py-1.5 px-1">
-            <!--Skriver ut meddelande om lösenord inte är ifyllt-->
-            <div v-if="emptyPassword">
-                <p class="text-white mt-3 text-sm font-content">
-                    <i class="fa-solid fa-circle-exclamation"></i>
-                    {{emptyPassword}}
-                </p>
+            <!--Lösenord-->
+            <div class="mt-9">
+                <label for="email" class="text-dark-color text-base">Lösenord</label><br>
+                <input type="password" v-model="password" name="password" id="password"
+                    class="w-full shadow-sm py-1.5 px-1 border-solid border-2 border-light-color rounded">
+                <!--Skriver ut meddelande om lösenord inte är ifyllt-->
+                <div v-if="emptyPassword">
+                    <p class="text-error mt-3 text-sm font-content">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        {{emptyPassword}}
+                    </p>
+                </div>
             </div>
-        </div>
-        <!--Logga in-knapp-->
-        <div>
-            <button @click.prevent="logIn()"
-                class="w-full md:w-3/5 m-auto block shadow-lg shadow-blue-500/40 bg-white mt-10 font-bold py-2 px-4 rounded hover:bg-light-color">Logga
-                in </button>
-        </div>
-    </form>
+            <!--Logga in-knapp-->
+            <div>
+                <button @click.prevent="logIn()"
+                    class="w-full md:w-3/5 m-auto block shadow-lg shadow-blue-500/40 bg-medium-color text-white mt-10 font-bold py-2 px-4 rounded hover:bg-light-color">Logga
+                    in </button>
+            </div>
+        </form>
+    </div>
 </template>
 
 <script>
@@ -112,5 +116,11 @@ export default {
 </script>
 
 <style scoped>
+
+form{
+    position: absolute;
+    left: 35%;
+    top:15%;
+}
 
 </style>

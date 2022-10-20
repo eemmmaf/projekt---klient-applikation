@@ -150,12 +150,14 @@ export default {
             error: [],
             categoryname: "",
             categories: [],
-            shelf: ""
+            shelf: "",
+            token: ""
         }
     },
     methods: {
         //Lägger til podcast
         async addProduct() {
+            this.token = localStorage.getItem('token');
             if (this.name && this.description && this.price && this.quantity && this.price && this.category_id && this.shelf != "") {
                 let createdBody = {
                     name: this.name,
@@ -170,7 +172,8 @@ export default {
                     method: "POST",
                     headers: {
                         "Accept": "application/json",
-                        "Content-type": "application/json"
+                        "Content-type": "application/json",
+                        "Authorization": "Bearer " + this.token
                     },
                     body: JSON.stringify(createdBody)
                 });
@@ -233,24 +236,31 @@ export default {
         },
         //Hämtar alla kategorier
         async getCategories() {
-            const resp = await fetch("http://localhost:8000/api/getcategories");
+            this.token = localStorage.getItem('token');
+            const resp = await fetch("http://localhost:8000/api/getcategories", {
+                method: 'GET',
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": "Bearer " + this.token
+                }
+            });
             const data = await resp.json();
             this.categories = data;
             console.log(this.categories);
         },
-        //Metod för att öka antal produkter i lager
-        increaseQ() {
-            this.quantity++;
+            //Metod för att öka antal produkter i lager
+            increaseQ() {
+                this.quantity++;
+            },
+            //Metod för att minska
+            decreaseQ() {
+                this.quantity--;
+            }
         },
-        //Metod för att minska
-        decreaseQ() {
-            this.quantity--;
+        mounted() {
+            this.getCategories();
         }
-    },
-    mounted() {
-        this.getCategories();
     }
-}
 </script>
 
 <style scoped>

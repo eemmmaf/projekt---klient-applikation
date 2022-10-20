@@ -1,6 +1,6 @@
 <template>
     <!--Email-->
-    <form class="shadow-lg py-8 px-7 bg-main-color md:max-w-md md:container mt-20 rounded" @submit.prevent="logIn()">
+    <form class="shadow-lg py-8 px-7 bg-main-color md:max-w-md md:container mt-20 rounded">
         <h1 class="text-center text-white text-xl font-bold">Logga in på MellisProffsen</h1>
         <!--Skriver ut felmeddelande om inloggning misslyckas-->
         <div v-if="errorMessage">
@@ -35,7 +35,7 @@
         </div>
         <!--Logga in-knapp-->
         <div>
-            <button @click="$router.push('/')"
+            <button @click.prevent="logIn()"
                 class="w-full md:w-3/5 m-auto block shadow-lg shadow-blue-500/40 bg-white mt-10 font-bold py-2 px-4 rounded hover:bg-light-color">Logga
                 in </button>
         </div>
@@ -50,16 +50,16 @@ export default {
             email: "",
             password: "",
             errorMessage: "",
-            token: "",
             emptyEmail: "",
-            emptyPassword: ""
+            emptyPassword: "",
+            token: ""
         }
     },
     methods: {
         //Lägger til podcast
         async logIn() {
             if (this.email && this.password != "") {
-                let favoriteBody = {
+                let loginBody = {
                     email: this.email,
                     password: this.password
                 };
@@ -70,13 +70,20 @@ export default {
                         "Accept": "application/json",
                         "Content-type": "application/json"
                     },
-                    body: JSON.stringify(favoriteBody)
+                    body: JSON.stringify(loginBody)
                 }
                 );
                 const data = await resp.json();
-
                 //Sparar token
                 this.token = data.token;
+
+                if (this.token != undefined) {
+                    //Sparar i localstorage
+                    localStorage.setItem('token', this.token);
+                    this.$router.push("/");
+                }
+
+
                 //Sparar meddelandet i variabeln message
                 let message = data.message;
                 //Hämtar meddelande från api och sparar det i errorMessage

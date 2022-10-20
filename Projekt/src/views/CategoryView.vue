@@ -11,11 +11,11 @@
 
 <script>
 import Category from '../components/Category.vue';
-
 export default {
     data() {
         return {
-            categories: []
+            categories: [],
+            token: ""
         }
     },
     components: {
@@ -24,7 +24,14 @@ export default {
     methods: {
         //Hämtar alla kategorier
         async getCategories() {
-            const resp = await fetch("http://localhost:8000/api/getcategories");
+            this.token = localStorage.getItem('token');
+            const resp = await fetch("http://localhost:8000/api/getcategories", {
+                method: 'GET',
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": "Bearer " + this.token
+                }
+            });
             const data = await resp.json();
             this.categories = data;
             console.log(this.categories);

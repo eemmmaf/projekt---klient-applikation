@@ -87,12 +87,14 @@ export default {
             success: "",
             nameError: "",
             descriptionError: "",
-            deleted: ""
+            deleted: "",
+            token: ""
         }
     },
     methods: {
         //Uppdaterar produkt
         async updateCategory(category) {
+            this.token = localStorage.getItem('token');
             if (category.categoryname && category.categorydescription != "") {
                 let updatedBody = {
                     id: this.id,
@@ -104,7 +106,8 @@ export default {
                     method: "PUT",
                     headers: {
                         "Accept": "application/json",
-                        "Content-type": "application/json"
+                        "Content-type": "application/json",
+                        "Authorization": "Bearer " + this.token
                     },
                     body: JSON.stringify(updatedBody)
                 });
@@ -131,12 +134,14 @@ export default {
         },
         //Metod för att ta bort produkt
         async deleteCategory(id) {
+            this.token = localStorage.getItem('token');
             const resp = await fetch("http://localhost:8000/api/deletecategory/" + this.id, {
                 //Använder metoden DELETE
                 method: "DELETE",
                 headers: {
                     "Accept": "application/json",
-                    "Content-type": "application/json"
+                    "Content-type": "application/json",
+                    "Authorization": "Bearer " + this.token
                 }
             });
             const data = await resp.json();
@@ -147,7 +152,17 @@ export default {
     },
     //Hämtar specifik product utifrån dess id och anropar getCategories
     async mounted() {
-        const resp = await fetch("http://localhost:8000/api/getcategory/" + this.id);
+        this.token = localStorage.getItem('token');
+        const resp = await fetch("http://localhost:8000/api/getcategory/" + this.id, {
+            //Använder metoden DELETE
+            method: "GET",
+            headers: {
+                "Accept": "application/json",
+                "Content-type": "application/json",
+                "Authorization": "Bearer " + this.token
+            }
+        });
+        
         const data = await resp.json();
         this.category = data;
     }

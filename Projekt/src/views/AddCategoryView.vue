@@ -54,11 +54,13 @@ export default {
             categorydescription: "",
             nameError: "",
             descriptionError: "",
-            success: ""
+            success: "",
+            token: ""
         }
     },
     methods: {
         async addCategory() {
+            this.token = localStorage.getItem('token');
             if (this.categoryname && this.categorydescription != "") {
                 let createdBody = {
                     categorydescription: this.categorydescription,
@@ -69,7 +71,8 @@ export default {
                     method: "POST",
                     headers: {
                         "Accept": "application/json",
-                        "Content-type": "application/json"
+                        "Content-type": "application/json",
+                        "Authorization": "Bearer " + this.token
                     },
                     body: JSON.stringify(createdBody)
                 });

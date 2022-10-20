@@ -12,6 +12,17 @@
         <!--Kontroll om en product hittas. Skriver ut nedan om det hittas-->
         <div class="border-solid border-2 p-5" v-if="product">
             <form class="mt-2" @submit.prevent="updateProduct(product)">
+                <!--Information om tid-->
+                <div class="flex justify-between mb-8">
+                    <div>
+                        <h3 class="font-bold">Skapad</h3>
+                        <p class="text-medium-color">{{product.created_at}}</p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold">Senast uppdaterad</h3>
+                        <p class="text-medium-color">{{product.updated_at}}</p>
+                    </div>
+                </div>
                 <div class="flex flex-col justify-between md:flex-row">
                     <div>
                         <div class="text-base font-content font-bold text-dark-color" v-if="success">
@@ -149,7 +160,8 @@ export default {
             categoryname: "",
             categories: [],
             shelf: "",
-            shelfError: ""
+            shelfError: "",
+            token: ""
         }
     },
 
@@ -165,6 +177,7 @@ export default {
 
         //Uppdaterar produkt
         async updateProduct(product) {
+            this.token = localStorage.getItem('token');
             if (product.name && product.description && product.price && product.quantity && product.price && product.category_id && product.shelf != "") {
                 let updatedBody = {
                     id: this.id,
@@ -173,14 +186,16 @@ export default {
                     quantity: product.quantity,
                     price: product.price,
                     shelf: product.shelf,
-                    category_id: product.category_id
+                    category_id: product.category_id,
+                    token: ""
                 };
                 //Fetch-anrop med metoden PUT
                 const resp = await fetch("http://localhost:8000/api/updateproduct/" + this.id, {
                     method: "PUT",
                     headers: {
                         "Accept": "application/json",
-                        "Content-type": "application/json"
+                        "Content-type": "application/json",
+                        "Authorization": "Bearer " + this.token
                     },
                     body: JSON.stringify(updatedBody)
                 });
@@ -226,7 +241,15 @@ export default {
         },
         //Hämtar alla kategorier
         async getCategories() {
-            const resp = await fetch("http://localhost:8000/api/getcategories");
+            this.token = localStorage.getItem('token');
+            const resp = await fetch("http://localhost:8000/api/getcategories", {
+                //Använder metoden GET
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": "Bearer " + this.token
+                }
+            });
             const data = await resp.json();
             this.categories = data;
             console.log(this.categories);
@@ -234,7 +257,14 @@ export default {
     },
     //Hämtar specifik product utifrån dess id och anropar getCategories
     async mounted() {
-        const resp = await fetch("http://localhost:8000/api/getproductbyid/" + this.id);
+        this.token = localStorage.getItem('token');
+        const resp = await fetch("http://localhost:8000/api/getproductbyid/" + this.id, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": "Bearer " + this.token
+            }
+        });
         const data = await resp.json();
         this.product = data;
 

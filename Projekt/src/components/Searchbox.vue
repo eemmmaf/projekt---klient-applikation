@@ -15,20 +15,30 @@ export default {
     },
     data() {
         return {
-            name: ""
+            name: "",
+            currentUrl: "",
+            token: ""
         }
     },
     methods: {
         //Hämtar specifik product utifrån dess id och anropar getCategories
         async searchResult() {
-            const resp = await fetch("http://localhost:8000/api/products/search/" + this.name);
+            this.token = localStorage.getItem('token');
+            const resp = await fetch("http://localhost:8000/api/products/search/" + this.name, {
+                method: 'GET',
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": "Bearer " + this.token
+                }
+            });
             const data = await resp.json();
             this.result = data;
-            console.log(this.result)
 
-            this.$router.push('result/' + this.name)
+
+            this.$router.push({ name: 'search', params: { name: this.name } });
         }
     }
-
 }
+
+
 </script>

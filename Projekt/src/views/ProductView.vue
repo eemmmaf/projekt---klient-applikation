@@ -6,18 +6,27 @@
         </div>
 
         <!--Sortera efter namn-->
-        <button @click='toggle = !toggle' class="p-2 border-solid border-2 border-light-pink">Sortera <i class="fa-solid fa-chevron-down"></i></button>
+        <button @click='toggle = !toggle' class="p-2 border-solid border-2 border-light-pink">Sortera <i
+                class="fa-solid fa-chevron-down"></i></button>
         <div class="flex gap-x-2 mt-3">
-            <button v-show='toggle' @click="sortByName(products)" class="p-2 border-solid border-2 border-light-pink">Namn A-Ö</button>
+            <button v-show='toggle' @click="sortByName(products)"
+                class="p-2 border-solid border-2 border-light-pink shadow-md hover:bg-main-color">Namn A-Ö</button>
 
             <!--ID-->
-            <button v-show='toggle' @click="sortById(products)" class="p-2 border-solid border-2 border-light-pink">ID</button>
+            <button v-show='toggle' @click="sortById(products)"
+                class="p-2 border-solid border-2 border-light-pink shadow-md hover:bg-main-color">ID</button>
 
             <!--Pris-->
-            <button v-show='toggle' @click="sortByPrice(products)" class="p-2 border-solid border-2 border-light-pink">Pris(stigande)</button>
+            <button v-show='toggle' @click="sortByPrice(products)"
+                class="p-2 border-solid border-2 border-light-pink shadow-md hover:bg-main-color">Pris(stigande)</button>
 
             <!--antal-->
-            <button v-show='toggle' @click="sortByQuantity(products)" class="p-2 border-solid border-2 border-light-pink">Antal</button>
+            <button v-show='toggle' @click="sortByQuantity(products)"
+                class="p-2 border-solid border-2 border-light-pink shadow-md hover:bg-main-color">Antal</button>
+
+            <!--Kategori-->
+            <button v-show='toggle' @click="sortByCategory(products)"
+                class="p-2 border-solid border-2 border-light-pink shadow-md hover:bg-main-color">Kategori</button>
 
         </div>
 
@@ -46,13 +55,13 @@
 import Product from '../components/Product.vue';
 
 export default {
-
     data() {
         return {
             products: [],
             quantity: "",
             deleted: "",
-            toggle: false
+            toggle: false,
+            token: ""
         }
     },
     components: {
@@ -61,25 +70,45 @@ export default {
     methods: {
         //Hämtar alla kategorier
         async getProducts() {
-            const resp = await fetch("http://localhost:8000/api/getproducts");
+            this.token = localStorage.getItem('token');
+            const resp = await fetch("http://localhost:8000/api/getproducts", {
+                method: 'GET',
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": "Bearer " + this.token
+                }
+            });
+
             const data = await resp.json();
             this.products = data;
-            console.log(this.products);
         },
+
+
         //Hämtar klickad produkt
         async getId(id) {
-            const resp = await fetch("http://localhost:8000/api/getproductbyid/" + id);
+            this.token = localStorage.getItem('token');
+            const resp = await fetch("http://localhost:8000/api/getproductbyid/" + id, {
+                method: 'GET',
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": "Bearer " + this.token
+                }
+            });
             const data = await resp.json();
-            console.log(data);
         },
+
+
+
         //Metod för att ta bort produkt
         async deleteProduct(id) {
+            this.token = localStorage.getItem('token');
             const resp = await fetch("http://localhost:8000/api/deleteproduct/" + id, {
                 //Använder metoden DELETE
                 method: "DELETE",
                 headers: {
                     "Accept": "application/json",
-                    "Content-type": "application/json"
+                    "Content-type": "application/json",
+                    "Authorization": "Bearer " + this.token
                 }
             });
             const data = await resp.json();
@@ -93,6 +122,13 @@ export default {
         sortByName() {
             this.products.sort(function (a, b) {
                 return a.name.localeCompare(b.name);
+            });
+        },
+
+        //Funktion för att sortera produktnamn A-Ö
+        sortByCategory() {
+            this.products.sort(function (a, b) {
+                return a.categoryname.localeCompare(b.categoryname);
             });
         },
 

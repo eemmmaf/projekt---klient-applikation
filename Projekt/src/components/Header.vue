@@ -1,8 +1,9 @@
 <template>
-        <header class="border-b-2 shadow-s">
+    <div v-if="$route.name!=='login'">
+        <header class="border-b-2 shadow-s bg-white ">
             <div class="flex justify-between">
                 <div class="flex">
-                    <div class="p-3 absolute left-40 mt-2">
+                    <div class="p-3 absolute md:left-40 mt-2">
                         <router-link to="/">
                             <h1 class="font-headings text-xl p-1 font-bold ml-10 text-dark-color">Matbolaget</h1>
                         </router-link>
@@ -15,20 +16,24 @@
                     </div>
 
                     <!--Cirkel istället för bild-->
-                    <div class="self-center border-l-2 p-3 text-dark-color">
+                    <div
+                        class="self-center border-solid border-2 pr-2 light-color rounded-3xl bg-gray-100 shadow-sm text-dark-color flex">
                         <div class="circle">
                         </div>
                         <!--Inloggades namn-->
-                        <p class="font-content font-bold">Emma Forslund</p>
+                        <div class="self-center ml-2">
+                            <p class="font-content text-dark-color">Emma Forslund</p>
+                        </div>
                     </div>
 
                     <!--Logga ut-->
-                    <div class="bg-medium-color text-white p-5 self-center">
-                        <button @click="logOut()">Logga ut</button>
+                    <div class="text-dark-color p-5 self-center font-headings">
+                        <button @click="logOut()">Logga ut <i class="fa-solid fa-right-from-bracket"></i></button>
                     </div>
                 </div>
             </div>
         </header>
+    </div>
 
 </template>
 <script>
@@ -95,6 +100,5 @@ img {
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    margin-left: 2rem;
 }
 </style>

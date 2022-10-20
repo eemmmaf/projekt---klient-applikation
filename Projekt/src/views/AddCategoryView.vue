@@ -1,12 +1,14 @@
 <template>
-    <div class="container max-w-screen-md mt-5">
+    <div class="container max-w-screen-sm mt-5">
         <h2 class="font-headings text-xxl text-center md:text-left mb-5 font-bold">Lägg till kategori</h2>
         <form class="mt-2" @submit.prevent="addCategory()">
-            <div class="border-solid border-2 p-5">
+            <div class="border-solid border-2 p-5 bg-white shadow-sm">
                 <div class="text-base font-content font-bold text-dark-color" v-if="success">
                     {{success}} <i class="fa-solid fa-circle-check text-green-600"></i>
                 </div>
-                <!--Produktens namn-->
+
+
+                <!--Kategorins namn-->
                 <div class="mt-5 md:w-3/5">
                     <label class="font-bold font-headings" for="name">Namn </label><i
                         class="fa-solid fa-pencil fa-2xs text-medium-color"></i><br>
@@ -19,11 +21,11 @@
                 </div>
 
                 <!--Textarea-->
-                <div class="mt-5 md:w-3/5">
+                <div class="mt-5 md:w-4/5">
                     <label for="description" class="font-bold font-headings">Beskrivning:</label>
                     <i class="fa-solid fa-pencil fa-2xs text-medium-color"></i><br>
 
-                    <textarea id="description" name="description" v-model="categorydescription" rows="4" cols="70"
+                    <textarea id="description" name="description" v-model="categorydescription" rows="4" cols="80"
                         class="border-solid border border-slate-400 shadow-sm bg-white p-1"></textarea>
                     <!-- Kontroll om felmeddelande och skriver ut om fel -->
                     <div class=" text-error font-bold font-content" v-if="descriptionError">
@@ -107,7 +109,8 @@ button {
     width: 100%;
 }
 
-textarea {
-    max-width: 100%;
+textarea{
+    max-width: 90%;
 }
+
 </style>

@@ -1,9 +1,9 @@
 <template>
-    <form @submit.prevent="searchResult()">
-        <label for="search">Sök</label>
-        <input type="text" name="search" id="search" v-model="name" class="border-solid border-2 border-light-pink">
+    <form class="border-solid border-2 border-light-pink p-1 shadow-sm rounded-lg" @submit.prevent="searchResult()">
+        <label class="text-base mr-1 font-headings bg-main-color p-1 rounded-lg" for="search">Sök</label>
+        <input type="text" name="search" id="search" placeholder="Sök efter produkt" v-model="name" class="">
         <button type="submit">
-            <i class="fa-2xl fa-solid fa-magnifying-glass hover:text-medium-color"></i>
+            <i class="fa-xl fa-solid fa-magnifying-glass hover:text-medium-color"></i>
         </button>
     </form>
 </template>
@@ -33,9 +33,6 @@ export default {
             });
             const data = await resp.json();
             this.result = data;
-
-
-            this.$router.push({ name: 'search', params: { name: this.name } });
         }
     }
 }

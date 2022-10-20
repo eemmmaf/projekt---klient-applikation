@@ -19,7 +19,7 @@
         </div>
 
 
-        <div class="border-solid border-2 p-5">
+        <div class="border-solid border-2 p-5 bg-white shadow-sm">
             <!--Formulär för att lägga till produkt-->
             <form class="mt-2" @submit.prevent="addProduct()">
 
@@ -248,19 +248,19 @@ export default {
             this.categories = data;
             console.log(this.categories);
         },
-            //Metod för att öka antal produkter i lager
-            increaseQ() {
-                this.quantity++;
-            },
-            //Metod för att minska
-            decreaseQ() {
-                this.quantity--;
-            }
+        //Metod för att öka antal produkter i lager
+        increaseQ() {
+            this.quantity++;
         },
-        mounted() {
-            this.getCategories();
+        //Metod för att minska
+        decreaseQ() {
+            this.quantity--;
         }
+    },
+    mounted() {
+        this.getCategories();
     }
+}
 </script>
 
 <style scoped>

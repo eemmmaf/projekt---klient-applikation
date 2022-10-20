@@ -1,5 +1,5 @@
 <template>
-    <div class="flex-item flex flex-row center p-8 mt-5 justify-evenly bg-medium-color flex-wrap">
+    <div class="flex-item flex flex-row center p-8 mt-5 justify-evenly flex-wrap">
         <div class="border-solid border-2 border-blue-900 rounded px-8 bg-main-color shadow-lg mt-3">
             <div class="font-headings p-10 text-center rounded-lg w-72">
                 <i class="fa-solid fa-circle-plus fa-5x"></i><br><br>

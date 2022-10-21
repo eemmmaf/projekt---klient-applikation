@@ -268,6 +268,23 @@ export default {
         const data = await resp.json();
         this.product = data;
 
+        //Om parametern ändras(vid sökning främst) uppdateras innehållet på sidan 
+        this.$watch(
+            () => this.$route.params,
+            async () => {
+                this.token = localStorage.getItem('token');
+                const resp = await fetch("http://localhost:8000/api/getproductbyid/" + this.id, {
+                    method: "GET",
+                    headers: {
+                        "Content-type": "application/json",
+                        "Authorization": "Bearer " + this.token
+                    }
+                });
+                const data = await resp.json();
+                this.product = data;
+            }
+        )
+
         this.getCategories();
     }
 }

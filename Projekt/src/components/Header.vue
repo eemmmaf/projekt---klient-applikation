@@ -1,36 +1,35 @@
 <template>
     <div v-if="$route.name!=='login'">
-        <header class="border-b-2 shadow-s bg-white ">
-            <div class="flex justify-between">
-                <div class="flex">
-                    <div class="p-3 absolute md:left-40 mt-2">
+        <header class="border-b-2 p-2 shadow-s bg-white">
+
+
+            <!--Flexcontainer för innehållet i headern-->
+            <div class="grid grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-1 md:justify-items-center">
+
+                    <div class="ml-20">
                         <router-link to="/">
-                            <h1 class="font-headings text-xl p-1 font-bold ml-10 text-dark-color">Matbolaget</h1>
+                            <h1 class="font-headings text-xl font-bold text-dark-color">Matbolaget</h1>
                         </router-link>
                     </div>
-                </div>
-                <div class="flex border-l-2">
-                    <div class="m-8 cursor-pointer text-dark-color">
-                        <!--Sökruta-->
+
+
+                    <!--Sökruta-->
+                    <div class="order-last self-center col-span-2 justify-self-center md:col-span-1">
                         <Searchbox />
                     </div>
 
-                    <!--Cirkel istället för bild-->
-                    <div
-                        class="self-center border-solid border-2 pr-2 light-color rounded-3xl bg-gray-100 shadow-sm text-dark-color flex">
-                        <div class="circle">
-                        </div>
-                        <!--Inloggades namn-->
-                        <div class="self-center ml-2">
-                            <p class="font-content text-dark-color">Emma Forslund</p>
-                        </div>
-                    </div>
 
+
+
+                <div class="justify-self-end md:order-last">
                     <!--Logga ut-->
-                    <div class="text-dark-color p-5 self-center font-headings">
-                        <button @click="logOut()">Logga ut <i class="fa-solid fa-right-from-bracket"></i></button>
-                    </div>
+                    <button @click="logOut()">Logga ut <i class="fa-solid fa-right-from-bracket"></i></button>
                 </div>
+
+
+
+
+
             </div>
         </header>
     </div>
@@ -100,5 +99,13 @@ img {
     height: 40px;
     width: 40px;
     border-radius: 50%;
+}
+
+@media only screen and (min-width: 1400px) {
+    h1 {
+        position: absolute;
+        left: 13rem;
+    }
+
 }
 </style>

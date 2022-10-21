@@ -17,8 +17,6 @@
             <div class="border-solid border-2 border-light-pink p-2 rounded-2xl w-1/4 text-center">
                 <h3>Lagrade produkter</h3>
                 <p class="font-bold text-xxl">{{result}}</p>
-                <h3>Produkter som snart är slut</h3>
-                <p class="font-bold text-xxl">{{quantityFive}}</p>
             </div>
         </div>
     </div>
@@ -32,9 +30,8 @@ export default {
         return {
             result: "",
             products: [],
-            lessThanFive: [],
             quantity: "",
-            quantityFive: []
+            quantityFive: ""
         }
     },
     components: {
@@ -61,6 +58,7 @@ export default {
             this.products = data;
             //Räknar hur många produkter som är lagrade
             this.result = this.products.length;
+
         },
     },
     mounted() {

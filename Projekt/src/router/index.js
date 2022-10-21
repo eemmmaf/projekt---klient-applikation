@@ -6,7 +6,6 @@ import SingleProduct from "../views/SingleProductView.vue";
 import AddProduct from "../views/AddProductView.vue";
 import SingleCategory from "../views/SingleCategoryView.vue";
 import AddCategory from "../views/AddCategoryView.vue";
-import SearchView from "../views/SearchView.vue";
 import Login from "../views/LoginView.vue";
 import AddUser from "../views/AddUserView.vue";
 
@@ -56,7 +55,7 @@ const router = createRouter({
       props: true,
       beforeEnter: (to, from, next) => {
         if(localStorage.getItem("token")){
-          next()
+          next();
         }else{
           next('/login');
         }
@@ -91,19 +90,6 @@ const router = createRouter({
       path: "/addcategory",
       name: "addcategory",
       component: AddCategory,
-      beforeEnter: (to, from, next) => {
-        if(localStorage.getItem("token")){
-          next()
-        }else{
-          next('/login');
-        }
-      }
-    },
-    {
-      path: '/:name',
-      name: 'search',
-      component: SearchView,
-      props: true,
       beforeEnter: (to, from, next) => {
         if(localStorage.getItem("token")){
           next()

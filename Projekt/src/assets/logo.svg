@@ -1,0 +1,13 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200" height="120">
+	<title>logo</title>
+	<style>
+		tspan { white-space:pre } 
+		.s0 { fill: #8101c6 } 
+		.t1 { font-size: 60px;fill: #ffffff;font-weight: 400;font-family: "Sen-Regular", "Sen" } 
+	</style>
+	<path id="Form 1" class="s0" d="m53.6 51.2c0-22.1 17.9-40 40-40h16.8c22.1 0 40 17.9 40 40v16.8c0 22.1-17.9 40-40 40h-16.8c-22.1 0-40-17.9-40-40z"/>
+	<text id="MB" style="transform: matrix(.8,0,0,.8,64.8,74.4)" >
+		<tspan x="0" y="0" class="t1">M</tspan><tspan  y="0" class="t1">B
+</tspan>
+	</text>
+</svg>

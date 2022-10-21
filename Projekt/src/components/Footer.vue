@@ -25,6 +25,10 @@
 
 <style scoped>
 footer {
-   min-height: calc(100vh - 95px); 
+    position: absolute;
+    bottom: 0;
+    height: 20px;
+    width: 100%;
+    padding: 2em;
 }
 </style>

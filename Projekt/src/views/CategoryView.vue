@@ -1,4 +1,11 @@
 <template>
+<!--/*
+ * @Author: Emma Forslund - emfo2102 
+ * @Date: 2022-10-24 16:40:13 
+ * @Last Modified by:   Emma Forslund - emfo2102 
+ * @Last Modified time: 2022-10-24 16:40:13 
+ */
+-->
     <h1 class="font-headings text-xxl font-bold text-center mt-8">Alla kategorier</h1>
 
     <!--Container där kategorierna skrivs ut-->

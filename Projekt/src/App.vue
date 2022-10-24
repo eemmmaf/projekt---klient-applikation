@@ -1,4 +1,11 @@
 <script>
+/*
+ * @Author: Emma Forslund - emfo2102 
+ * @Date: 2022-10-24 16:46:42 
+ * @Last Modified by:   Emma Forslund - emfo2102 
+ * @Last Modified time: 2022-10-24 16:46:42 
+ */
+
 import { RouterLink, RouterView } from "vue-router";
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';

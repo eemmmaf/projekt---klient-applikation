@@ -1,4 +1,13 @@
 <template>
+<!--/*
+ * @Author: Emma Forslund - emfo2102 
+ * @Date: 2022-10-24 16:40:13 
+ * @Last Modified by:   Emma Forslund - emfo2102 
+ * @Last Modified time: 2022-10-24 16:40:13 
+ */
+-->
+
+
     <!--Gömmer om personen inte är inloggad-->
     <div v-if="$route.name!=='login'">
         <!--Meny för desktop-->

@@ -1,18 +1,16 @@
 <template>
-    <div class="container max-w-screen-md mt-5">
+<!--/*
+ * @Author: Emma Forslund - emfo2102 
+ * @Date: 2022-10-24 16:40:13 
+ * @Last Modified by:   Emma Forslund - emfo2102 
+ * @Last Modified time: 2022-10-24 16:40:13 
+ */
+-->
+    <div class="container max-w-screen-md mt-5 mb-5">
         <div class="bg-white shadow-sm p-4">
-            <div class="flex justify-between">
-                <div>
-                    <h2 class="font-headings text-xxl text-center md:text-left mb-5 font-bold">Matbolagets
-                        administration
-                    </h2>
-                </div>
-                <div class="self-baseline">
-                    <!--Dagens datum-->
-                    <p class="text-dark-color font-content text-base">{{currentDate()}}</p>
-                </div>
-            </div>
-
+                <h2 class="font-headings text-xxl text-center md:text-left mb-7 font-bold">Matbolagets
+                    administration
+                </h2>
 
             <div class="flex justify-between flex-col md:flex-row">
                 <!--Antal varor-->

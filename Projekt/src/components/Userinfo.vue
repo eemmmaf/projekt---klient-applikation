@@ -1,4 +1,12 @@
 <template>
+<!--/*
+ * @Author: Emma Forslund - emfo2102 
+ * @Date: 2022-10-24 16:40:13 
+ * @Last Modified by:   Emma Forslund - emfo2102 
+ * @Last Modified time: 2022-10-24 16:40:13 
+ */
+-->
+
     <div class="border-solid border-2 border-light-pink p-8 flex flex-col justify-center shadow-md text-center">
         <div>
             <h2 class="font-headings text-base mb-5 font-bold">Inloggad användare</h2>

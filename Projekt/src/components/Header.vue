@@ -1,3 +1,11 @@
+<!--/*
+ * @Author: Emma Forslund - emfo2102 
+ * @Date: 2022-10-24 16:40:13 
+ * @Last Modified by:   Emma Forslund - emfo2102 
+ * @Last Modified time: 2022-10-24 16:40:13 
+ */
+-->
+
 <template>
     <div v-if="$route.name!=='login'">
         <header class="border-b-2 p-2 shadow-s bg-white">
@@ -6,7 +14,7 @@
             <!--Flexcontainer för innehållet i headern-->
             <div class="grid grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-1 md:justify-items-center">
 
-                    <div class="ml-20">
+                    <div class="md:ml-20 ml-8 text-center">
                         <router-link to="/">
                             <h1 class="font-headings text-xl font-bold mt-1 text-dark-color">Matbolaget</h1>
                         </router-link>

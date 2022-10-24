@@ -1,3 +1,11 @@
+<!--/*
+ * @Author: Emma Forslund - emfo2102 
+ * @Date: 2022-10-24 16:40:13 
+ * @Last Modified by:   Emma Forslund - emfo2102 
+ * @Last Modified time: 2022-10-24 16:40:13 
+ */
+-->
+
 <template>
     <article class="p-5 mt-8">
         <div class="flex justify-between bg-main-color rounded-t-lg">

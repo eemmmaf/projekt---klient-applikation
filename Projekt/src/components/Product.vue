@@ -1,4 +1,12 @@
 <template>
+<!--/*
+ * @Author: Emma Forslund - emfo2102 
+ * @Date: 2022-10-24 16:40:13 
+ * @Last Modified by:   Emma Forslund - emfo2102 
+ * @Last Modified time: 2022-10-24 16:40:13 
+ */
+-->
+
     <tr class="border-solid border-2 border-light-pink font-content hover:bg-slate-100">
         <td>{{product.id}}
         </td>

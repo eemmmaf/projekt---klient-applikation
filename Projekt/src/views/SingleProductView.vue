@@ -1,18 +1,25 @@
 <template>
-    <div class="container max-w-screen-md mt-5">
+<!--/*
+ * @Author: Emma Forslund - emfo2102 
+ * @Date: 2022-10-24 16:40:13 
+ * @Last Modified by:   Emma Forslund - emfo2102 
+ * @Last Modified time: 2022-10-24 16:40:13 
+ */
+-->
+    <div class="container max-w-screen-md mt-5 mb-7">
         <h2 class="font-headings text-xxl text-center md:text-left mb-5 font-bold">Ändra produkt</h2>
         <!--Kontroll om en product hittas. Skriver ut nedan om det hittas-->
         <div class="border-solid border-2 p-5 bg-white shadow-sm" v-if="product">
             <form class="mt-2" @submit.prevent="updateProduct(product)">
                 <!--Information om tid-->
-                <div class="flex justify-between mb-8">
+                <div class="flex flex-col justify-end mb-8 md:justify-between md:flex-row ">
                     <div>
                         <h3 class="font-bold">Skapad</h3>
-                        <p class="text-medium-color">{{product.created_at}}</p>
+                        <p class="text-dark-color text-sm">{{product.created_at}}</p>
                     </div>
                     <div>
                         <h3 class="font-bold">Senast uppdaterad</h3>
-                        <p class="text-medium-color">{{product.updated_at}}</p>
+                        <p class="text-dark-color text-sm">{{product.updated_at}}</p>
                     </div>
                 </div>
                 <div class="flex flex-col justify-between md:flex-row">

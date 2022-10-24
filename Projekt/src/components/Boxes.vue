@@ -1,3 +1,11 @@
+<!--/*
+ * @Author: Emma Forslund - emfo2102 
+ * @Date: 2022-10-24 16:40:13 
+ * @Last Modified by:   Emma Forslund - emfo2102 
+ * @Last Modified time: 2022-10-24 16:40:13 
+ */
+-->
+
 <template>
     <div class="flex-item flex flex-row center p-8 mt-5 justify-evenly flex-wrap">
         <div class="border-solid border-2 border-blue-900 rounded px-8 bg-main-color shadow-lg mt-3">

@@ -1,4 +1,11 @@
 <template>
+<!--/*
+ * @Author: Emma Forslund - emfo2102 
+ * @Date: 2022-10-24 16:40:13 
+ * @Last Modified by:   Emma Forslund - emfo2102 
+ * @Last Modified time: 2022-10-24 16:40:13 
+ */
+-->
     <div class="bg-main-color h-screen">
         <!--Email-->
         <form
@@ -116,11 +123,9 @@ export default {
 </script>
 
 <style scoped>
-
-form{
+form {
     position: absolute;
     left: 35%;
-    top:15%;
+    top: 15%;
 }
-
 </style>

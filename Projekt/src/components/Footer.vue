@@ -1,7 +1,15 @@
+<!--/*
+ * @Author: Emma Forslund - emfo2102 
+ * @Date: 2022-10-24 16:40:13 
+ * @Last Modified by:   Emma Forslund - emfo2102 
+ * @Last Modified time: 2022-10-24 16:40:13 
+ */
+-->
+
 <template>
     <div v-if="$route.name!=='login'">
-        <footer class="bg-main-color mt-11">
-            <div class="flex flex-row text-white justify-center">
+        <footer class="bg-white mt-11 shadow-md border-solid border-2 border-light-pink">
+            <div class="flex flex-row text-dark-color justify-center">
                 <div>
                     <h2>Hälsolagret</h2>
                     <p>BLalblalablba</p>
@@ -27,8 +35,7 @@
 footer {
     position: absolute;
     bottom: 0;
-    height: 20px;
     width: 100%;
-    padding: 2em;
+    padding: 0.5rem;
 }
 </style>

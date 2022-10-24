@@ -15,13 +15,12 @@
         <div v-if="deleted">
             <p class="font-content text-center mt-5 text-base">{{deleted}}</p>
         </div>
-
         <!--Knapp för att visa olika alternativ för sortering-->
-        <button @click='toggle = !toggle' class="p-2 border-solid border-2 border-light-pink bg-white">Sortera <i
+        <button @click='toggle = !toggle' class="p-2 border-solid border-2 border-light-pink bg-white font-content mt-3 ml-1">Sortera <i
                 class="fa-solid fa-chevron-down"></i></button>
 
         <!--Sortera efter namn-->
-        <div class="flex gap-x-2 mt-3">
+        <div class="flex gap-x-2 mt-3 font-content ml-1 flex-col md:flex-row">
             <button v-show='toggle' @click="sortByName(products)"
                 class="p-2 border-solid border-2 border-light-pink shadow-md hover:bg-main-color bg-white">Namn
                 A-Ö</button>
@@ -45,25 +44,29 @@
         </div>
 
         <!--Tabell där kategorierna skrivs ut-->
-        <table
-            class="table-auto border-collapse border-solid border-2 border-light-pink mt-5 w-full text-center bg-white shadow-sm mb-7">
-            <thead class="bg-main-color font-headings">
-                <tr>
-                    <th>ID</th>
-                    <th>Namn</th>
-                    <th>Antal</th>
-                    <th>Pris</th>
-                    <th>Kategori</th>
-                    <th>Uppdatera</th>
-                    <th>Ta bort</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!--Använder komponenten Product-->
-                <Product @getId="getId(product.id)" @delete="deleteProduct(product.id)" v-for="product in products"
-                    :product="product" :key="product.id" />
-            </tbody>
-        </table>
+        <div class="responsive-table">
+            <table
+                class="table-auto border-collapse border-solid border-2 border-light-pink mt-5 w-full text-center bg-white shadow-sm mb-7">
+                <thead class="bg-main-color font-headings">
+                    <tr>
+                        <th>ID</th>
+                        <th>Namn</th>
+                        <th>Antal</th>
+                        <th>Pris</th>
+                        <th>Kategori</th>
+                        <th>Uppdatera</th>
+                        <th>Ta bort</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--Använder komponenten Product-->
+                    <Product @getId="getId(product.id)" @delete="deleteProduct(product.id)" v-for="product in products"
+                        :product="product" :key="product.id" />
+                </tbody>
+            </table>
+        </div>
+
+        <p class="font-content text-center text-xl shadow-sm p-2">{{emptyMsg}}</p>
     </div>
 </template>
 
@@ -78,7 +81,8 @@ export default {
             quantity: "",
             deleted: "",
             toggle: false,
-            token: ""
+            token: "",
+            emptyMsg: ""
         }
     },
     components: {
@@ -98,6 +102,13 @@ export default {
 
             const data = await resp.json();
             this.products = data;
+
+            console.log(this.products);
+
+            //Kollar om det finns några produkter sparade och skriver annars ut meddelande
+            if (this.products.length === 0) {
+                this.emptyMsg = "Det finns inga lagrade produkter."
+            };
         },
 
 
@@ -191,5 +202,9 @@ export default {
 <style scoped>
 th {
     padding: 1em;
+}
+
+.responsive-table {
+    overflow-x: auto
 }
 </style>

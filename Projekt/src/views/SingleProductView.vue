@@ -19,24 +19,25 @@
             <!--Formulär för att ändra enskild produkt. Anropar updateProduct i formuläret om knappen trycks på-->
             <form class="mt-2" @submit.prevent="updateProduct(product)">
 
+                <!--Skriver ut meddelande om produkten uppdateras-->
+                <div class="text-base font-content font-bold text-dark-color mb-5" v-if="success">
+                    {{success}} <i class="fa-solid fa-circle-check text-green-600"></i>
+                </div>
+
                 <!--Information om tid-->
                 <div class="flex flex-col justify-end mb-8 md:justify-between md:flex-row ">
                     <div>
                         <h3 class="font-bold">Skapad</h3>
-                        <p class="text-dark-color text-sm">{{product.created_at}}</p>
+                        <p class="text-dark-color text-sm">{{formatDate(product.created_at)}}</p>
                     </div>
                     <div>
                         <h3 class="font-bold">Senast uppdaterad</h3>
-                        <p class="text-dark-color text-sm">{{product.updated_at}}</p>
+                        <p class="text-dark-color text-sm">{{formatDate(product.updated_at)}}</p>
                     </div>
                 </div>
 
                 <div class="flex flex-col justify-between md:flex-row">
                     <div>
-                        <!--Skriver ut meddelande om produkten uppdateras-->
-                        <div class="text-base font-content font-bold text-dark-color" v-if="success">
-                            {{success}} <i class="fa-solid fa-circle-check text-green-600"></i>
-                        </div>
 
                         <!--Produktens ID-->
                         <div class="mt-2 md:w-3/5">
@@ -120,7 +121,7 @@
                         <div class="flex justify-center md:justify-between mt-3">
                             <i @click="decreaseQ(product.quantity)"
                                 class="fa-solid fa-circle-minus fa-3x text-dark-color cursor-pointer hover:text-medium-color"></i>
-                            <input v-model="product.quantity" type="number" id="price" name="price"
+                            <input v-model="product.quantity" type="text" id="price" name="price"
                                 class="border-solid border border-slate-400 shadow-sm bg-white w-11 mx-4 text-center">
                             <!--Plus-knapp-->
                             <i @click="increaseQ(product.quantity)"
@@ -187,7 +188,7 @@ export default {
         //Uppdaterar produkt
         async updateProduct(product) {
             this.token = localStorage.getItem('token');
-            if (product.name && product.description && product.price && product.quantity && product.price && product.category_id && product.shelf != "") {
+            if (product.name && product.description && product.price && product.price && product.category_id && product.shelf != "") {
                 let updatedBody = {
                     id: this.id,
                     name: product.name,
@@ -195,8 +196,7 @@ export default {
                     quantity: product.quantity,
                     price: product.price,
                     shelf: product.shelf,
-                    category_id: product.category_id,
-                    token: ""
+                    category_id: product.category_id
                 };
                 //Fetch-anrop med metoden PUT
                 const resp = await fetch("http://localhost:8000/api/updateproduct/" + this.id, {
@@ -262,7 +262,13 @@ export default {
             const data = await resp.json();
             this.categories = data;
             console.log(this.categories);
-        }
+        },
+
+        //Metod för att formatera om datum
+        formatDate(date) {
+            const options = {  day: 'numeric',  month: 'long', year: 'numeric' }
+            return new Date(date).toLocaleTimeString('sv', options)
+        },
     },
     //Hämtar specifik produkt utifrån dess id och anropar getCategories
     async mounted() {

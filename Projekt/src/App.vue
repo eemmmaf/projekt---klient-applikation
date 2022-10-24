@@ -17,12 +17,16 @@ export default {
 </script>
 
 <template>
-        <Header />
-        <Aside />
-    <main>
-        <RouterView />
-    </main>
-    <Footer />
+    <div class="pagecontainer">
+        <div class="wrapper">
+            <Header />
+            <Aside />
+            <main>
+                <RouterView />
+            </main>
+        </div>
+        <Footer />
+    </div>
 </template>
 
 <script>
@@ -30,5 +34,12 @@ export default {
 </script>
 
 <style scoped>
+.pagecontainer {
+    position: relative;
+    min-height: 100vh;
+}
 
+.wrapper{
+    padding-bottom: 4rem; 
+}
 </style>

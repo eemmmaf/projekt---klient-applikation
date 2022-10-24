@@ -15,7 +15,7 @@
             <!--Flexcontainer för innehållet i headern-->
             <div class="grid grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-1 md:justify-items-center">
 
-                <div class="md:ml-20 ml-8 text-center">
+                <div class="md:ml-20 ml-16 text-center">
                     <router-link to="/">
                         <h1 class="font-headings text-xl font-bold mt-1 text-dark-color">Matbolaget</h1>
                     </router-link>
@@ -27,8 +27,8 @@
                 </div>
 
                 <!--Logga ut-knapp-->
-                <div class="justify-self-end md:order-last">
-                    <button @click="logOut()">Logga ut <i class="fa-solid fa-right-from-bracket"></i></button>
+                <div class="justify-self-end md:order-last font-content md:border-l-2">
+                    <button class="mt-5 ml-2" @click="logOut()">Logga ut <i class="fa-solid fa-right-from-bracket"></i></button>
                 </div>
 
             </div>

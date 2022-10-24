@@ -10,7 +10,7 @@
     <!--View för att lägga till produkt-->
 
     <div class="container max-w-screen-md mt-5 mb-8">
-        <h2 class="font-headings text-xxl text-center md:text-left mb-5 font-bold">Lägg till produkt</h2>
+        <h2 class="font-headings text-xxl text-center md:text-left mb-5 font-bold text-dark-color">Lägg till produkt</h2>
 
         <!--Skriver ut felmeddelande med alla fel -->
         <div class="border-solid border border-error p-4 md:max-w-xs mb-5 bg-white shadow-md" v-if="error.length">
@@ -110,7 +110,7 @@
                             <!--Anropar funktionen som minskar antal-->
                             <i @click="decreaseQ(quantity)"
                                 class="fa-solid fa-circle-minus fa-3x text-dark-color cursor-pointer hover:text-medium-color"></i>
-                            <input v-model="quantity" type="number" id="price" name="price"
+                            <input v-model="quantity" type="text" id="price" name="price"
                                 class="border-solid border border-slate-400 shadow-sm bg-white w-11 mx-4 text-center">
                             <!--Anropar funktionen som ökar antal-->
                             <i @click="increaseQ(quantity)"
@@ -143,7 +143,7 @@ export default {
             name: "",
             description: "",
             price: "",
-            quantity: 0,
+            quantity: "0",
             category_id: "",
             success: "",
             nameError: "",
@@ -163,7 +163,7 @@ export default {
         //Lägger till produkt
         async addProduct() {
             this.token = localStorage.getItem('token');
-            if (this.name && this.description && this.price && this.quantity && this.price && this.category_id && this.shelf != "") {
+            if (this.name && this.description && this.price && this.price && this.category_id && this.shelf != "") {
                 let createdBody = {
                     name: this.name,
                     description: this.description,
@@ -226,11 +226,7 @@ export default {
                     this.error.push("Pris måste fyllas i");
                     this.priceError = "Fyll i pris";
                 }
-                //Felmeddelande för antal produkter
-                if (!this.quantity) {
-                    this.error.push("Antal varor lagrade måste fyllas i");
-                    this.quantityError = "Fyll i hur många varor som finns lagrade";
-                }
+
                 //Felmeddelande för hyllplats
                 if (!this.shelf) {
                     this.error.push("Hyllplats måste fyllas i");

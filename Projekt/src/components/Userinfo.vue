@@ -7,7 +7,7 @@
     <!--Komponent för att skriva ut information om användare-->
 
 
-    <div class="border-solid border-2 border-light-pink p-8 flex flex-col justify-center shadow-md text-center">
+    <div class="border-solid border-2 border-light-pink p-8 flex flex-col justify-center shadow-md text-center mt-8 md:mt-0">
         <div>
             <h2 class="font-headings text-base mb-5 font-bold">Inloggad användare</h2>
             <div class="place-self-center">

@@ -113,7 +113,7 @@ li {
 }
 
 .btn {
-    font-size: 2em;
+    font-size: 1.7em;
     position: absolute;
     top: 0.5%;
     left: 3%;

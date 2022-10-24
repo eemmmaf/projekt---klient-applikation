@@ -1,5 +1,5 @@
 <template>
-<!--/*
+    <!--/*
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-10-24 16:40:13 
  * @Last Modified by:   Emma Forslund - emfo2102 
@@ -7,7 +7,7 @@
  */
 -->
 
-<!--View där kategorierna skrivs ut-->
+    <!--View där kategorierna skrivs ut-->
 
 
     <h2 class="font-headings text-xxl font-bold text-center mt-8">Alla kategorier</h2>
@@ -17,6 +17,7 @@
         <div>
             <Category v-for="category in categories" :category="category" :key="category.id" />
         </div>
+        <p class="font-content text-center text-xl shadow-sm p-2">{{emptyMsg}}</p>
     </div>
 </template>
 
@@ -28,7 +29,8 @@ export default {
     data() {
         return {
             categories: [],
-            token: ""
+            token: "",
+            emptyMsg: ""
         }
     },
     components: {
@@ -47,6 +49,16 @@ export default {
             });
             const data = await resp.json();
             this.categories = data;
+
+            //Sorterar utifrån namn A-Ö
+            this.categories.sort(function (a, b) {
+                return a.categoryname.localeCompare(b.categoryname);
+            });
+
+            //Kollar om det finns några produkter sparade och skriver annars ut meddelande
+            if (this.categories.length === 0) {
+                this.emptyMsg = "Det finns inga lagrade kategorier."
+            };
         }
     },
     mounted() {

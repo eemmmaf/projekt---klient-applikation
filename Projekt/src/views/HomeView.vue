@@ -10,8 +10,8 @@
     <!--View för startsidan-->
 
     <div class="container max-w-screen-md mt-5 mb-5">
-        <div class="bg-white shadow-sm p-4">
-            <h2 class="font-headings text-xxl text-center md:text-left mb-7 font-bold">Matbolagets
+        <div class="bg-white shadow-sm p-6">
+            <h2 class="font-headings text-xxl text-center md:text-left mb-7 font-bold text-dark-color">Matbolagets
                 administration
             </h2>
 
@@ -20,29 +20,30 @@
                 <div class="">
                     <div
                         class="border-solid border-2 border-light-pink p-2 bg-medium-color text-white mb-3 mt-2 rounded-2xl text-center">
-                        <h3>Lagrade produkter</h3>
+                        <h3 class="font-headings">Lagrade produkter</h3>
                         <p class="font-bold text-xxl">{{result}}st</p>
                     </div>
 
                     <!--Antal kategorier-->
                     <div
                         class="border-solid border-2 border-light-pink p-2 bg-main-color text-dark-color mt-2 mb-3 rounded-2xl text-center">
-                        <h3>Lagrade kategorier</h3>
+                        <h3 class="font-headings">Lagrade kategorier</h3>
                         <p class="font-bold text-xxl">{{catResult}}st</p>
                     </div>
 
                     <!--Skriver ut de 5 senast tillagda produkterna-->
-                    <div class="border-solid border-2 border-light-pink p-5 mt-4">
-                        <h2 class="font-headings text-xl text-center md:text-left font-bold">5 senaste produkterna
+                    <div class="border-solid border-2 border-light-pink p-5 mt-7">
+                        <h2 class="font-headings text-xl text-center md:text-left font-bold text-dark-color">5 senaste produkterna
                         </h2>
                         <!--Använder komponenten LatestProducts-->
                         <LatestProducts v-for="product in products.slice(0, 5)" :product="product" :key="product.id" />
+                        <p class="font-content text-center text-base shadow-sm p-2">{{emptyMsg}}</p>
                     </div>
                 </div>
 
 
                 <!--Använder komponenten Userinfo-->
-                <div>
+                <div class="text-dark-color">
                     <Userinfo />
                 </div>
 
@@ -65,7 +66,8 @@ export default {
             categories: [],
             quantity: "",
             catResult: "",
-            created_at: ""
+            created_at: "",
+            emptyMsg: ""
         }
     },
     components: {
@@ -99,9 +101,13 @@ export default {
                 return b.id - a.id;
             });
 
-
             //Räknar hur många produkter som är lagrade och lagrar i result
             this.result = this.products.length;
+
+            //Kollar om det finns några produkter sparade och skriver annars ut meddelande
+            if (this.products.length === 0) {
+                this.emptyMsg = "Det finns inga lagrade produkter."
+            };
         },
         //Hämtar alla kategorier
         async getCategories() {

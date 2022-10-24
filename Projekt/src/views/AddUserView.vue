@@ -1,5 +1,5 @@
 <template>
- <!--/*
+    <!--/*
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-10-24 16:40:13 
  * @Last Modified by:   Emma Forslund - emfo2102 
@@ -71,21 +71,15 @@
                                 <span>{{verifiedError}}</span>
                             </div>
                         </div>
-
-
-
-                        <!--Knapp för att lägga till-->
-                        <div class="mt-10">
-                            <button
-                                class="bg-dark-color p-3 font-headings font-bold rounded-md shadow-md text-main-color hover:bg-medium-color"
-                                type="submit">Lägg till
-                            </button>
-                        </div>
                     </div>
 
-
-
-
+                </div>
+                <!--Knapp för att lägga till-->
+                <div class="mt-10">
+                    <button
+                        class="bg-dark-color p-3 font-headings font-bold rounded-md shadow-md text-main-color hover:bg-medium-color"
+                        type="submit">Lägg till
+                    </button>
                 </div>
             </form>
 
@@ -185,9 +179,11 @@ export default {
 </script>
 
 <style scoped>
-button {
+button{
     max-width: 200px;
+    display: block;
     width: 100%;
-    margin: auto;
+    margin: 2rem auto 1rem auto;
 }
+
 </style>

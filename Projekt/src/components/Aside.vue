@@ -67,7 +67,7 @@
                             </router-link>
                         </li>
                         <li>
-                            <router-link to="/categories"><i class="fa-solid fa-user-plus"></i> Användare</router-link>
+                            <router-link to="/adduser"><i class="fa-solid fa-user-plus"></i> Användare</router-link>
                         </li>
                     </ul>
                 </div>

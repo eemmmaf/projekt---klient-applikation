@@ -1,5 +1,5 @@
 <template>
-<!--/*
+    <!--/*
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-10-24 16:40:13 
  * @Last Modified by:   Emma Forslund - emfo2102 
@@ -7,6 +7,7 @@
  */
 -->
 
+    <!--Komponent för navigeringen som är på sidan-->
 
     <!--Gömmer om personen inte är inloggad-->
     <div v-if="$route.name!=='login'">
@@ -14,7 +15,9 @@
         <nav class="max-w-sm font-headings text-base desktop">
             <div
                 class="fixed left-0 top-0 flex flex-col items-center w-48 overflow-hidden text-dark-color rounded bg-white border-solid border-2 h-screen">
+                <!--Logotypen-->
                 <router-link to="/"><img src="../assets/logo.svg" alt=""></router-link>
+                <!--Lista med länkar till olika views-->
                 <ul class="mt-15">
                     <li class="hover:underline">
                         <router-link to="/"><i class="fa-solid fa-house text-medium-color"></i> Startsida</router-link>
@@ -44,9 +47,11 @@
 
         <!--Mobil-->
         <nav class="max-w-sm font-headings text-base mobile">
+            <!--Visar menyn vid klick för mobil-->
             <button @click='toggle = !toggle' class="btn text-medium-color">
                 <i class="fa-solid fa-bars"></i>
             </button>
+            <!--Mobilmeny-->
             <div v-show="toggle">
                 <div
                     class="fixed left-0 top-0 flex flex-col items-center w-48 overflow-hidden text-dark-color rounded bg-white border-solid border-2 h-screen">

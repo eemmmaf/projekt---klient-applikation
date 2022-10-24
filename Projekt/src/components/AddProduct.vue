@@ -1,5 +1,5 @@
 <template>
-    <!--/*
+<!--/*
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-10-24 16:40:13 
  * @Last Modified by:   Emma Forslund - emfo2102 
@@ -7,9 +7,12 @@
  */
 
 -->
+
+    <!--View för att ändra en produkt-->
     <h2 class="font-headings text-xxl text-center md:text-left mb-5 font-bold">Ändra produkt</h2>
 
-    <!--Kontroll om en product hittas. Skriver ut nedan om det hittas-->
+
+    <!--Kontroll för att se om en produkt hittas-->
     <div class="border-solid border-2 p-5" v-if="product">
         <form class="mt-2" @submit.prevent="updateProduct(product)">
             <div class="flex flex-col justify-between md:flex-row">

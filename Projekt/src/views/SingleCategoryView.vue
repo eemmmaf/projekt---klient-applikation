@@ -1,17 +1,25 @@
 <template>
-<!--/*
+    <!--/*
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-10-24 16:40:13 
  * @Last Modified by:   Emma Forslund - emfo2102 
  * @Last Modified time: 2022-10-24 16:40:13 
  */
 -->
+
+    <!--View för att skriva ut enskild kategori-->
+
     <div class="container max-w-screen-md mt-5">
         <h2 class="font-headings text-xxl text-center md:text-left mb-5 font-bold">Ändra kategori
         </h2>
+
         <!--Kontroll om en kategori hittas. Skriver ut nedan om det hittas-->
         <div class="border-solid border-2 p-5 bg-white shadow-sm" v-if="category">
+            
+            <!--Formulär där kategorins innehåll skrivs ut så att användaren kan ändra-->
             <form class="mt-2" @submit.prevent="updateCategory(category)">
+
+                <!--Skriver ut meddelande om ändringen lyckas-->
                 <div class="text-base font-content font-bold text-dark-color" v-if="success">
                     {{success}} <i class="fa-solid fa-circle-check text-green-600"></i>
                 </div>
@@ -36,7 +44,7 @@
                             </div>
                         </div>
 
-                        <!--Textarea-->
+                        <!--Beskrivning-->
                         <div class="mt-5 md:w-3/5">
                             <label for="description" class="font-bold font-headings">Beskrivning:</label>
                             <i class="fa-solid fa-pencil fa-2xs text-medium-color"></i><br>
@@ -50,7 +58,7 @@
                             </div>
                         </div>
 
-                        <!--Knapp för att uppdatera till-->
+                        <!--Knapp för att uppdatera-->
                         <div class="mt-20">
                             <button
                                 class="bg-dark-color p-3 font-headings font-bold rounded-md shadow-md text-main-color hover:bg-medium-color"
@@ -115,7 +123,7 @@ export default {
                     body: JSON.stringify(updatedBody)
                 });
 
-                //Skriver ut felmeddelande
+                //Lagrar meddelande om kategorin uppdateras 
                 this.success = "Kategorin har uppdaterats";
                 this.nameError = "";
                 this.descriptionError = "";
@@ -125,11 +133,11 @@ export default {
                 this.nameError = "";
                 this.descriptionError = "";
 
-                //Kontroll om namn fyllts i
+                //Kontroll om namn fyllts i och lagrar felmeddelande
                 if (!category.categoryname) {
                     this.nameError = "Namn måste fyllas i";
                 }
-                //Kontroll om kategori fyllts i
+                //Kontroll om kategoribeskrivning fyllts i och lagrar felmeddelande
                 if (!category.categorydescription) {
                     this.descriptionError = "Beskrivning måste fyllas i";
                 }
@@ -153,7 +161,7 @@ export default {
         }
 
     },
-    //Hämtar specifik product utifrån dess id och anropar getCategories
+    //Hämtar specifik kategori utifrån dess id 
     async mounted() {
         this.token = localStorage.getItem('token');
         const resp = await fetch("http://localhost:8000/api/getcategory/" + this.id, {
@@ -165,7 +173,7 @@ export default {
                 "Authorization": "Bearer " + this.token
             }
         });
-        
+
         const data = await resp.json();
         this.category = data;
     }

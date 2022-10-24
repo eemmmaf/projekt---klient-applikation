@@ -7,21 +7,11 @@
 -->
 
 <template>
+    <!--Koll om användaren är på login-sidan -->
     <div v-if="$route.name!=='login'">
         <footer class="bg-white mt-11 shadow-md border-solid border-2 border-light-pink">
             <div class="flex flex-row text-dark-color justify-center">
-                <div>
-                    <h2>Hälsolagret</h2>
-                    <p>BLalblalablba</p>
-                </div>
-                <div>
-                    <h2>Hälsolagret</h2>
-                    <p>BLalblalablba</p>
-                </div>
-                <div>
-                    <h2>Hälsolagret</h2>
-                    <p>BLalblalablba</p>
-                </div>
+                <p>DT193G - Emma Forslund - emfo2102@student.miun.se</p>
             </div>
 
         </footer>

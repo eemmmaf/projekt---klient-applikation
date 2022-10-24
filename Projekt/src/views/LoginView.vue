@@ -1,13 +1,16 @@
 <template>
-<!--/*
+    <!--/*
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-10-24 16:40:13 
  * @Last Modified by:   Emma Forslund - emfo2102 
  * @Last Modified time: 2022-10-24 16:40:13 
  */
 -->
+
+    <!--View för att logga in-->
+
     <div class="bg-main-color h-screen">
-        <!--Email-->
+        <!--Formulär för att logga in-->
         <form
             class="shadow-lg py-8 px-7 bg-white md:max-w-md md:container rounded text-dark-color border-solid border-2 border-main-color">
             <h1 class="text-center font-headings text-xl font-bold">Logga in på Matbolaget</h1>
@@ -17,6 +20,8 @@
                     {{errorMessage}}
                 </p>
             </div>
+
+            <!--Email-->
             <div class="mt-7">
                 <label for="email" class="text-dark-color text-base">Email</label><br>
                 <input v-model="email" type="email" name="mail" id="email"
@@ -43,7 +48,8 @@
                     </p>
                 </div>
             </div>
-            <!--Logga in-knapp-->
+
+            <!--Logga in-knapp som anropar logIn-->
             <div>
                 <button @click.prevent="logIn()"
                     class="w-full md:w-3/5 m-auto block shadow-lg shadow-blue-500/40 bg-medium-color text-white mt-10 font-bold py-2 px-4 rounded hover:bg-light-color">Logga
@@ -67,7 +73,7 @@ export default {
         }
     },
     methods: {
-        //Lägger til podcast
+        //Metod för att logga in
         async logIn() {
             if (this.email && this.password != "") {
                 let loginBody = {
@@ -88,6 +94,7 @@ export default {
                 //Sparar token
                 this.token = data.token;
 
+                //Kontroll om token är undefined
                 if (this.token != undefined) {
                     //Sparar i localstorage
                     localStorage.setItem('token', this.token);

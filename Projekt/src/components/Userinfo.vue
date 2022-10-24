@@ -1,11 +1,11 @@
 <template>
-<!--/*
+    <!--/*
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-10-24 16:40:13 
- * @Last Modified by:   Emma Forslund - emfo2102 
- * @Last Modified time: 2022-10-24 16:40:13 
  */
 -->
+    <!--Komponent för att skriva ut information om användare-->
+
 
     <div class="border-solid border-2 border-light-pink p-8 flex flex-col justify-center shadow-md text-center">
         <div>

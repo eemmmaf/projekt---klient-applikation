@@ -1,11 +1,14 @@
 <template>
-<!--/*
+    <!--/*
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-10-24 16:40:13 
  * @Last Modified by:   Emma Forslund - emfo2102 
  * @Last Modified time: 2022-10-24 16:40:13 
  */
 -->
+
+    <!--View för att lägga till produkt-->
+
     <div class="container max-w-screen-md mt-5 mb-8">
         <h2 class="font-headings text-xxl text-center md:text-left mb-5 font-bold">Lägg till produkt</h2>
 
@@ -26,6 +29,7 @@
 
                 <div class="flex flex-col justify-between md:flex-row">
                     <div>
+                        <!--Skriver ut meddelande om produkten läggs till-->
                         <div class="text-base font-content font-bold text-dark-color" v-if="success">
                             {{success}} <i class="fa-solid fa-circle-check text-green-600"></i>
                         </div>
@@ -70,7 +74,7 @@
                         <div class="mt-5 md:w-3/5">
                             <label class="font-bold font-headings" for="price">Kategori </label><i
                                 class="fa-solid fa-pencil fa-2xs text-medium-color"></i><br>
-                            <!--Select-->
+                            <!--Select med kategorier-->
                             <select v-model="category_id"
                                 class="border-solid border border-slate-400 shadow-sm w-full bg-white p-1">7
                                 <option value="">Välj kategori</option>
@@ -85,11 +89,10 @@
                             </div>
                         </div>
 
-                        <!--Textarea-->
+                        <!--Beskrivning-->
                         <div class="mt-5 md:w-3/5">
                             <label for="description" class="font-bold font-headings">Produktbeskrivning:</label>
                             <i class="fa-solid fa-pencil fa-2xs text-medium-color"></i><br>
-
                             <textarea id="description" name="description" v-model="description" rows="4" cols="70"
                                 class="border-solid border border-slate-400 shadow-sm bg-white p-1"></textarea>
                             <!-- Kontroll om felmeddelande och skriver ut om fel -->
@@ -104,11 +107,12 @@
                         <label class="font-headings font-bold text-xl mx-3" for="price">Antal i lager</label><br>
                         <!--Minus-->
                         <div class="flex justify-center md:justify-between mt-3">
+                            <!--Anropar funktionen som minskar antal-->
                             <i @click="decreaseQ(quantity)"
                                 class="fa-solid fa-circle-minus fa-3x text-dark-color cursor-pointer hover:text-medium-color"></i>
                             <input v-model="quantity" type="number" id="price" name="price"
                                 class="border-solid border border-slate-400 shadow-sm bg-white w-11 mx-4 text-center">
-                            <!--Plus-->
+                            <!--Anropar funktionen som ökar antal-->
                             <i @click="increaseQ(quantity)"
                                 class="fa-solid fa-circle-plus fa-3x text-dark-color cursor-pointer hover:text-medium-color"></i>
                         </div>
@@ -156,7 +160,7 @@ export default {
         }
     },
     methods: {
-        //Lägger til podcast
+        //Lägger till produkt
         async addProduct() {
             this.token = localStorage.getItem('token');
             if (this.name && this.description && this.price && this.quantity && this.price && this.category_id && this.shelf != "") {

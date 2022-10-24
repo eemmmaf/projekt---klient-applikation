@@ -6,7 +6,11 @@
  * @Last Modified time: 2022-10-24 16:40:13 
  */
 -->
-    <h1 class="font-headings text-xxl font-bold text-center mt-8">Alla kategorier</h1>
+
+<!--View där kategorierna skrivs ut-->
+
+
+    <h2 class="font-headings text-xxl font-bold text-center mt-8">Alla kategorier</h2>
 
     <!--Container där kategorierna skrivs ut-->
     <div class="container max-w-screen-md">
@@ -17,7 +21,9 @@
 </template>
 
 <script>
+//Importerar komponenten Category
 import Category from '../components/Category.vue';
+
 export default {
     data() {
         return {
@@ -41,7 +47,6 @@ export default {
             });
             const data = await resp.json();
             this.categories = data;
-            console.log(this.categories);
         }
     },
     mounted() {

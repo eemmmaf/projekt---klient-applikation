@@ -7,6 +7,7 @@
 -->
 
 <template>
+    <!--Kontroll för att se om användaren inte befinner sig på login-sidan.-->
     <div v-if="$route.name!=='login'">
         <header class="border-b-2 p-2 shadow-s bg-white">
 
@@ -14,35 +15,29 @@
             <!--Flexcontainer för innehållet i headern-->
             <div class="grid grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-1 md:justify-items-center">
 
-                    <div class="md:ml-20 ml-8 text-center">
-                        <router-link to="/">
-                            <h1 class="font-headings text-xl font-bold mt-1 text-dark-color">Matbolaget</h1>
-                        </router-link>
-                    </div>
-
-
-                    <!--Sökruta-->
-                    <div class="order-last self-center col-span-2 justify-self-center md:col-span-1">
-                        <Searchbox />
-                    </div>
-
-
-
-
-                <div class="justify-self-end md:order-last">
-                    <!--Logga ut-->
-                    <button @click="logOut()">Logga ut <i class="fa-solid fa-right-from-bracket"></i></button>
+                <div class="md:ml-20 ml-8 text-center">
+                    <router-link to="/">
+                        <h1 class="font-headings text-xl font-bold mt-1 text-dark-color">Matbolaget</h1>
+                    </router-link>
                 </div>
 
+                <!--Sökruta. Använder komponent-->
+                <div class="order-last self-center col-span-2 justify-self-center md:col-span-1">
+                    <Searchbox />
+                </div>
 
-
-
+                <!--Logga ut-knapp-->
+                <div class="justify-self-end md:order-last">
+                    <button @click="logOut()">Logga ut <i class="fa-solid fa-right-from-bracket"></i></button>
+                </div>
 
             </div>
         </header>
     </div>
 
 </template>
+
+
 <script>
 import Searchbox from '../components/Searchbox.vue';
 import { RouterLink } from 'vue-router';
@@ -55,7 +50,6 @@ export default {
     },
     data() {
         return {
-            toggle: false,
             result: [],
             products: "",
             token: "",
@@ -64,7 +58,7 @@ export default {
         }
     },
     methods: {
-        //Lägger til podcast
+        //Funktion för att logga ut. Anropas på knappen logga ut
         async logOut() {
             this.token = localStorage.getItem('token');
             let body = {
@@ -85,8 +79,10 @@ export default {
             const data = await resp.json();
 
 
+            //Tömmer localstorage
             localStorage.clear();
 
+            //Tar använder till login-sida
             this.$router.push('/login');
         }
     }
@@ -97,6 +93,7 @@ export default {
 </script>
 
 <style scoped>
+/*Logotypen*/
 img {
     max-width: 100px;
     margin-top: 0.5em;

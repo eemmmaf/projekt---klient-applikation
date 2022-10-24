@@ -12,6 +12,7 @@
 
             <!--Formulär för att lägga till en användare-->
             <form class="mt-2" @submit.prevent="addUser()">
+                <!--Meddelande om användare läggs till-->
                 <div class="text-center mb-5 text-base font-content font-bold text-dark-color" v-if="success">
                     {{success}} <i class="fa-solid fa-circle-check text-green-600"></i>
                 </div>
@@ -30,7 +31,7 @@
                             </div>
                         </div>
 
-                        <!--Användarens mailadress-->
+                        <!--Användarens lösenord-->
                         <div class="mt-5">
                             <label class="font-bold font-headings" for="password">Lösenord</label><br>
                             <input v-model="password" type="password" id="password" name="password"
@@ -112,8 +113,10 @@ export default {
         }
     },
     methods: {
+        //Metod för att lägga till en användare
         async addUser() {
             this.token = localStorage.getItem('token');
+            //Kontroll om lösenorden stämmer överens med 
             if (this.password === this.verifiedPassword) {
                 if (this.name && this.email && this.password != "") {
                     let registerBody = {
@@ -133,6 +136,7 @@ export default {
                         body: JSON.stringify(registerBody)
                     });
 
+                    //Lägger til ett meddelande om användaren registreras
                     this.success = "Användare registrerad"
 
 
@@ -147,7 +151,7 @@ export default {
                 } else {
 
 
-                    //Gör tomma om det lyckas
+                    //Gör meddelandena tomma
                     this.nameError = "";
                     this.emailError = "";
                     this.passwordError = "";
@@ -155,6 +159,7 @@ export default {
                     this.success = "";
                     this.verifiedError = "";
 
+                    //Felmeddelanden
                     if (!this.name) {
                         this.nameError = "Fyll i namn";
                     }
@@ -169,6 +174,7 @@ export default {
                     }
                 }
             } else {
+                //Meddelande om lösenorden inte stämmer överens
                 this.verifiedError = "Lösenorden matchar inte."
                 this.passwordError = "";
                 this.passwordVerifyError = "";

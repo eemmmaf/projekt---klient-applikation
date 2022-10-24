@@ -1,16 +1,24 @@
 <template>
-<!--/*
+    <!--/*
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-10-24 16:40:13 
  * @Last Modified by:   Emma Forslund - emfo2102 
  * @Last Modified time: 2022-10-24 16:40:13 
  */
 -->
+
+    <!--View för att ändra enskild produkt-->
+
+
     <div class="container max-w-screen-md mt-5 mb-7">
         <h2 class="font-headings text-xxl text-center md:text-left mb-5 font-bold">Ändra produkt</h2>
-        <!--Kontroll om en product hittas. Skriver ut nedan om det hittas-->
+
+        <!--Kontroll om en produkt hittas. Skriver ut nedan om det hittas-->
         <div class="border-solid border-2 p-5 bg-white shadow-sm" v-if="product">
+
+            <!--Formulär för att ändra enskild produkt. Anropar updateProduct i formuläret om knappen trycks på-->
             <form class="mt-2" @submit.prevent="updateProduct(product)">
+
                 <!--Information om tid-->
                 <div class="flex flex-col justify-end mb-8 md:justify-between md:flex-row ">
                     <div>
@@ -22,14 +30,17 @@
                         <p class="text-dark-color text-sm">{{product.updated_at}}</p>
                     </div>
                 </div>
+
                 <div class="flex flex-col justify-between md:flex-row">
                     <div>
+                        <!--Skriver ut meddelande om produkten uppdateras-->
                         <div class="text-base font-content font-bold text-dark-color" v-if="success">
                             {{success}} <i class="fa-solid fa-circle-check text-green-600"></i>
                         </div>
+
                         <!--Produktens ID-->
                         <div class="mt-2 md:w-3/5">
-                            <h2 class="font-bold font-headings">Artikelnummer</h2>
+                            <h2 class="font-bold font-headings">ID</h2>
                             <input v-model="product.id" type="text" id="id" name="id" disabled
                                 class="border-solid border shadow-sm w-full read-only:border-slate-200 read-only:bg-slate-50 p-1">
                         </div>
@@ -88,11 +99,10 @@
                             </div>
                         </div>
 
-                        <!--Textarea-->
+                        <!--Beskrivning-->
                         <div class="mt-5 md:w-3/5">
                             <label for="description" class="font-bold font-headings">Produktbeskrivning:</label>
                             <i class="fa-solid fa-pencil fa-2xs text-medium-color"></i><br>
-
                             <textarea id="description" name="description" v-model="product.description" rows="4"
                                 cols="70"
                                 class="border-solid border border-slate-400 shadow-sm bg-white p-1"></textarea>
@@ -106,18 +116,18 @@
                     <!--Antal i lager-->
                     <div class="text-center md:text-left mt-5">
                         <label class="font-headings font-bold text-xl mx-3" for="price">Antal i lager</label><br>
-                        <!--Minus-->
+                        <!--Minus-knapp-->
                         <div class="flex justify-center md:justify-between mt-3">
                             <i @click="decreaseQ(product.quantity)"
                                 class="fa-solid fa-circle-minus fa-3x text-dark-color cursor-pointer hover:text-medium-color"></i>
                             <input v-model="product.quantity" type="number" id="price" name="price"
                                 class="border-solid border border-slate-400 shadow-sm bg-white w-11 mx-4 text-center">
-                            <!--Plus-->
+                            <!--Plus-knapp-->
                             <i @click="increaseQ(product.quantity)"
                                 class="fa-solid fa-circle-plus fa-3x text-dark-color cursor-pointer hover:text-medium-color"></i>
                         </div>
 
-                        <!--Knapp för att uppdatera till-->
+                        <!--Knapp för att uppdatera-->
                         <div class="mt-20">
                             <button
                                 class="bg-dark-color p-3 font-headings font-bold rounded-md shadow-md text-main-color hover:bg-medium-color"
@@ -198,7 +208,7 @@ export default {
                     },
                     body: JSON.stringify(updatedBody)
                 });
-                //Lägger till ett meddelande att producten har uppdaterats
+                //Lägger till ett meddelande att kategorin har uppdaterats
                 this.success = "Produkten har uppdaterats";
                 //Gör meddelandena tomma by default
                 this.nameError = "";
@@ -254,7 +264,7 @@ export default {
             console.log(this.categories);
         }
     },
-    //Hämtar specifik product utifrån dess id och anropar getCategories
+    //Hämtar specifik produkt utifrån dess id och anropar getCategories
     async mounted() {
         this.token = localStorage.getItem('token');
         const resp = await fetch("http://localhost:8000/api/getproductbyid/" + this.id, {
@@ -283,7 +293,7 @@ export default {
                 this.product = data;
             }
         )
-
+        //Anropar metoden som hämtar alla kategorier
         this.getCategories();
     }
 }

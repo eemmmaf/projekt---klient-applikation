@@ -1,16 +1,19 @@
 <template>
-<!--/*
+    <!--/*
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-10-24 16:40:13 
- * @Last Modified by:   Emma Forslund - emfo2102 
- * @Last Modified time: 2022-10-24 16:40:13 
  */
 -->
 
+    <!--View där användaren kan lägga till kategori-->
+
     <div class="container max-w-screen-sm mt-5">
         <h2 class="font-headings text-xxl text-center md:text-left mb-5 font-bold">Lägg till kategori</h2>
+
+        <!--Formulär. Anropar metoden addCategory-->
         <form class="mt-2" @submit.prevent="addCategory()">
             <div class="border-solid border-2 p-5 bg-white shadow-sm">
+                <!--Skriver ut meddelande om det lycks-->
                 <div class="text-base font-content font-bold text-dark-color" v-if="success">
                     {{success}} <i class="fa-solid fa-circle-check text-green-600"></i>
                 </div>
@@ -28,11 +31,10 @@
                     </div>
                 </div>
 
-                <!--Textarea-->
+                <!--Kategorins beskrivning-->
                 <div class="mt-5 md:w-4/5">
                     <label for="description" class="font-bold font-headings">Beskrivning:</label>
                     <i class="fa-solid fa-pencil fa-2xs text-medium-color"></i><br>
-
                     <textarea id="description" name="description" v-model="categorydescription" rows="4" cols="80"
                         class="border-solid border border-slate-400 shadow-sm bg-white p-1"></textarea>
                     <!-- Kontroll om felmeddelande och skriver ut om fel -->
@@ -69,6 +71,7 @@ export default {
         }
     },
     methods: {
+        //Metod för att lägga till kategori
         async addCategory() {
             this.token = localStorage.getItem('token');
             if (this.categoryname && this.categorydescription != "") {
@@ -87,7 +90,10 @@ export default {
                     body: JSON.stringify(createdBody)
                 });
 
+                //Meddelande om kategorin lyckas läggas till
                 this.success = "Kategorin har lagts till";
+
+                //Gör felmeddelanden tomma
                 this.descriptionError = "";
                 this.nameError = "";
             } else {
@@ -96,11 +102,11 @@ export default {
                 this.nameError = "";
                 this.descriptionError = "";
 
-                //Kontroll om namn fyllts i
+                //Kontroll om namn fyllts i och lägger till felmeddelande
                 if (!this.categoryname) {
                     this.nameError = "Namn måste fyllas i";
                 }
-                //Kontroll om kategori fyllts i
+                //Kontroll om kategori fyllts i och lägger till felmeddelande
                 if (!this.categorydescription) {
                     this.descriptionError = "Beskrivning måste fyllas i";
                 }
@@ -117,8 +123,7 @@ button {
     width: 100%;
 }
 
-textarea{
+textarea {
     max-width: 90%;
 }
-
 </style>

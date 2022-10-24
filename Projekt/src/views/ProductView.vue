@@ -31,7 +31,7 @@
         </div>
 
         <!--Tabell där kategorierna skrivs ut-->
-        <table class="table-auto border-collapse border-solid border-2 border-light-pink mt-5 w-full text-center bg-white shadow-sm">
+        <table class="table-auto border-collapse border-solid border-2 border-light-pink mt-5 w-full text-center bg-white shadow-sm mb-7">
             <thead class="bg-main-color font-headings">
                 <tr>
                     <th>ID</th>

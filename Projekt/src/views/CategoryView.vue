@@ -1,5 +1,5 @@
 <template>
-    <h1 class="font-headings text-xxl font-bold text-center mt-8">Kategorier</h1>
+    <h1 class="font-headings text-xxl font-bold text-center mt-8">Alla kategorier</h1>
 
     <!--Container där kategorierna skrivs ut-->
     <div class="container max-w-screen-md">

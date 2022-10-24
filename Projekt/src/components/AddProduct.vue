@@ -1,12 +1,4 @@
 <template>
-    <div class="container max-w-screen-md mt-5">
-        <ul class="font-content flex mb-5 text-base px-2 md:px-1">
-            <li class="hover:underline">
-                <router-link to="/products">Alla produkter ></router-link>
-            </li>
-            <li class="font-bold">Lägg till produkt</li>
-        </ul>
-    </div>
     <h2 class="font-headings text-xxl text-center md:text-left mb-5 font-bold">Ändra produkt</h2>
 
     <!--Kontroll om en product hittas. Skriver ut nedan om det hittas-->

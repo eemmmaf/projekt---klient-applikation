@@ -1,15 +1,9 @@
 <template>
     <div class="container max-w-screen-md mt-5">
-        <ul class="font-content flex mb-5 text-base px-2 md:px-1">
-            <li class="hover:underline">
-                <router-link to="/products">Start ></router-link>
-            </li>
-            <li class="font-bold">Lägg till produkt</li>
-        </ul>
         <h2 class="font-headings text-xxl text-center md:text-left mb-5 font-bold">Lägg till produkt</h2>
 
         <!--Skriver ut felmeddelande med alla fel -->
-        <div class="border-solid border border-error p-4 md:max-w-xs mb-5" v-if="error.length">
+        <div class="border-solid border border-error p-4 md:max-w-xs mb-5 bg-white shadow-md" v-if="error.length">
             <h2 class="font-headings font-bold">Följande fel upptäckes:</h2>
             <ul class="list-disc list-inside text-error">
                 <!--Loopar igenom fel och skriver ut-->

@@ -134,7 +134,7 @@ export default {
                     this.emailError = "";
                     this.passwordError = "";
                     this.passwordVerifyError = "";
-                    this.verifiedError = "Lösenorden matchar inte."
+                    this.verifiedError = "";
 
 
                 } else {
@@ -145,7 +145,8 @@ export default {
                     this.emailError = "";
                     this.passwordError = "";
                     this.passwordVerifyError = "";
-                    this.success = ""
+                    this.success = "";
+                    this.verifiedError = "";
 
                     if (!this.name) {
                         this.nameError = "Fyll i namn";

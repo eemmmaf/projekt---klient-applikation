@@ -8,7 +8,7 @@
 
                     <div class="ml-20">
                         <router-link to="/">
-                            <h1 class="font-headings text-xl font-bold text-dark-color">Matbolaget</h1>
+                            <h1 class="font-headings text-xl font-bold mt-1 text-dark-color">Matbolaget</h1>
                         </router-link>
                     </div>
 
@@ -92,13 +92,6 @@ export default {
 img {
     max-width: 100px;
     margin-top: 0.5em;
-}
-
-.circle {
-    background-color: #C080E2;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
 }
 
 @media only screen and (min-width: 1400px) {

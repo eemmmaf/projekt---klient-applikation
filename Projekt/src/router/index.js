@@ -8,6 +8,7 @@ import SingleCategory from "../views/SingleCategoryView.vue";
 import AddCategory from "../views/AddCategoryView.vue";
 import Login from "../views/LoginView.vue";
 import AddUser from "../views/AddUserView.vue";
+import NotFound from '../views/NotFound.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,9 +18,9 @@ const router = createRouter({
       name: "home",
       component: HomeView,
       beforeEnter: (to, from, next) => {
-        if(localStorage.getItem("token")){
+        if (localStorage.getItem("token")) {
           next()
-        }else{
+        } else {
           next('/login');
         }
       }
@@ -29,9 +30,9 @@ const router = createRouter({
       name: "categories",
       component: Categories,
       beforeEnter: (to, from, next) => {
-        if(localStorage.getItem("token")){
+        if (localStorage.getItem("token")) {
           next()
-        }else{
+        } else {
           next('/login');
         }
       }
@@ -41,9 +42,9 @@ const router = createRouter({
       name: "products",
       component: Products,
       beforeEnter: (to, from, next) => {
-        if(localStorage.getItem("token")){
+        if (localStorage.getItem("token")) {
           next()
-        }else{
+        } else {
           next('/login');
         }
       }
@@ -54,9 +55,9 @@ const router = createRouter({
       component: SingleProduct,
       props: true,
       beforeEnter: (to, from, next) => {
-        if(localStorage.getItem("token")){
+        if (localStorage.getItem("token")) {
           next();
-        }else{
+        } else {
           next('/login');
         }
       }
@@ -66,9 +67,9 @@ const router = createRouter({
       name: "addproduct",
       component: AddProduct,
       beforeEnter: (to, from, next) => {
-        if(localStorage.getItem("token")){
+        if (localStorage.getItem("token")) {
           next()
-        }else{
+        } else {
           next('/login');
         }
       }
@@ -79,9 +80,9 @@ const router = createRouter({
       component: SingleCategory,
       props: true,
       beforeEnter: (to, from, next) => {
-        if(localStorage.getItem("token")){
+        if (localStorage.getItem("token")) {
           next()
-        }else{
+        } else {
           next('/login');
         }
       }
@@ -91,9 +92,9 @@ const router = createRouter({
       name: "addcategory",
       component: AddCategory,
       beforeEnter: (to, from, next) => {
-        if(localStorage.getItem("token")){
+        if (localStorage.getItem("token")) {
           next()
-        }else{
+        } else {
           next('/login');
         }
       }
@@ -108,12 +109,26 @@ const router = createRouter({
       name: "adduser",
       component: AddUser,
       beforeEnter: (to, from, next) => {
-        if(localStorage.getItem("token")){
+        if (localStorage.getItem("token")) {
           next()
-        }else{
+        } else {
           next('/login');
         }
       }
+    },
+    {
+      //404 - Not found-sida
+      path: '/:catchAll(.*)',
+      name: 'Not found',
+      component: NotFound,
+      beforeEnter: (to, from, next) => {
+        if (localStorage.getItem("token")) {
+          next()
+        } else {
+          next('/login');
+        }
+      }
+
     }
   ],
 });

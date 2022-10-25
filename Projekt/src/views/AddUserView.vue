@@ -18,10 +18,10 @@
                 </div>
 
 
-                <div class="flex flex-col md:flex-row justify-evenly">
+                <div class="flex flex-col justify-center">
                     <div>
                         <!--Användarens namn-->
-                        <div class="mt-5 w-80">
+                        <div class="mt-5 w-full md:w-3/4">
                             <label class="font-bold font-headings" for="username">Namn </label><br>
                             <input v-model="name" type="text" id="username" name="username"
                                 class="border-solid border border-slate-400 shadow-sm w-full bg-white p-1">
@@ -31,22 +31,8 @@
                             </div>
                         </div>
 
-                        <!--Användarens lösenord-->
-                        <div class="mt-5">
-                            <label class="font-bold font-headings" for="password">Lösenord</label><br>
-                            <input v-model="password" type="password" id="password" name="password"
-                                class="border-solid border border-slate-400 shadow-sm w-full bg-white p-1">
-                            <!-- Kontroll om felmeddelande och skriver ut om fel -->
-                            <div class=" text-error font-bold font-content" v-if="passwordError">
-                                <span>{{passwordError}}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-
-
                         <!--Användarens mailadress-->
-                        <div class="mt-5 w-80">
+                        <div class="mt-5 w-full md:w-3/4">
                             <label class="font-bold font-headings" for="email">Mailadress</label><br>
                             <input v-model="email" type="email" id="email" name="email"
                                 class="border-solid border border-slate-400 shadow-sm w-full bg-white p-1">
@@ -55,9 +41,23 @@
                                 <span>{{emailError}}</span>
                             </div>
                         </div>
+                        <div>
+
+                            <!--Användarens lösenord-->
+                            <div class="mt-5 w-full md:w-3/4">
+                                <label class="font-bold font-headings" for="password">Lösenord</label><br>
+                                <input v-model="password" type="password" id="password" name="password"
+                                    class="border-solid border border-slate-400 shadow-sm w-full bg-white p-1">
+                                <!-- Kontroll om felmeddelande och skriver ut om fel -->
+                                <div class=" text-error font-bold font-content" v-if="passwordError">
+                                    <span>{{passwordError}}</span>
+                                </div>
+                            </div>
+                        </div>
+
 
                         <!--Upprepa lösenord-->
-                        <div class="mt-5">
+                        <div class="mt-5 w-full md:w-3/4">
                             <label class="font-bold font-headings" for="verified">Upprepa lösenord</label><br>
                             <input v-model="verifiedPassword" type="password" id="verified" name="verified"
                                 class="border-solid border border-slate-400 shadow-sm w-full bg-white p-1">
@@ -179,11 +179,10 @@ export default {
 </script>
 
 <style scoped>
-button{
+button {
     max-width: 200px;
     display: block;
     width: 100%;
     margin: 2rem auto 1rem auto;
 }
-
 </style>

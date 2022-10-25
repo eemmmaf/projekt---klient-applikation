@@ -9,9 +9,9 @@
 <template>
     <!--Koll om användaren är på login-sidan -->
     <div v-if="$route.name!=='login'">
-        <footer class="bg-white mt-11 shadow-md border-solid border-2 border-light-pink">
+        <footer class="bg-white mt-11 shadow-md border-solid border-2 border-light-pink text-center">
             <div class="flex flex-row text-dark-color justify-center">
-                <p>DT193G - Emma Forslund - emfo2102@student.miun.se</p>
+                <p class="text-dark font-content">DT193G - Emma Forslund - emfo2102@student.miun.se</p>
             </div>
 
         </footer>

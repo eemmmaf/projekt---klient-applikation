@@ -22,6 +22,7 @@
 </template>
 
 <script>
+
 //Importerar komponenten Category
 import Category from '../components/Category.vue';
 

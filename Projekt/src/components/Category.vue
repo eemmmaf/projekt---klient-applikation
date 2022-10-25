@@ -19,7 +19,7 @@
             <div class="p-3 text-dark-color cursor-pointer flex">
                 <!--Länk till kategori-->
                 <Router-link class="text-dark-color" :to="{name: 'singlecategory', params: { id: category.id } }"><i
-                        class="fa-xl fa-solid fa-pen"></i></Router-link>
+                        class="fa-xl fa-solid fa-pen hover:text-medium-color"></i></Router-link>
                 </div>
             </div>
             <!--Beskrivning-->

@@ -9,7 +9,7 @@
 
     <!--View för att skriva ut enskild kategori-->
 
-    <div class="container max-w-screen-md mt-5">
+    <div class="container max-w-screen-md mt-5 mb-7">
         <h2 class="font-headings text-xxl text-center md:text-left mb-5 font-bold">Ändra kategori
         </h2>
 
@@ -33,7 +33,7 @@
                 <!--Kategorins namn-->
                 <div class="md:flex">
                     <div>
-                        <div class="mt-5 md:w-3/5">
+                        <div class="mt-5 w-full md:w-3/4">
                             <label class="font-bold font-headings" for="name">Kategorins namn </label><i
                                 class="fa-solid fa-pencil fa-2xs text-medium-color"></i><br>
                             <input v-model="category.categoryname" type="text" id="name" name="name"
@@ -45,7 +45,7 @@
                         </div>
 
                         <!--Beskrivning-->
-                        <div class="mt-5 md:w-3/5">
+                        <div class="mt-5 w-full md:w-3/4">
                             <label for="description" class="font-bold font-headings">Beskrivning:</label>
                             <i class="fa-solid fa-pencil fa-2xs text-medium-color"></i><br>
 
@@ -59,16 +59,16 @@
                         </div>
 
                         <!--Knapp för att uppdatera-->
-                        <div class="mt-20">
+                        <div class="mt-14">
                             <button
-                                class="bg-dark-color p-3 font-headings font-bold rounded-md shadow-md text-main-color hover:bg-medium-color"
+                                class="bg-dark-color p-3 font-headings font-bold rounded-md shadow-md text-main-color hover:bg-medium-color btn"
                                 type="submit">Uppdatera
                             </button>
                         </div>
                     </div>
 
                     <!--Knapp för att ta bort-->
-                    <div @click="deleteCategory(id)" class="text-dark-color w-36">
+                    <div @click="deleteCategory(id)" class="text-dark-color w-36 mt-20">
                         <div
                             class="bg-main-color p-2 rounded-md shadow-lg border-solid border-2 border-light-pink font-headings font-bold hover:bg-medium-color cursor-pointer text-center">
                             Ta
@@ -88,6 +88,7 @@
 </template>
 
 <script>
+
 export default {
     props: ['id'],
     data() {
@@ -158,6 +159,7 @@ export default {
             const data = await resp.json();
             //Sparar meddelande från apiet. Meddelandet om att podcasten har tagits bort
             this.deleted = data[0];
+            this.success = "";
         }
 
     },
@@ -189,5 +191,10 @@ button {
 
 textarea {
     max-width: 100%;
+}
+
+.btn{
+    display: block;
+    margin: auto;
 }
 </style>

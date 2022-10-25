@@ -7,7 +7,7 @@
 
     <!--View där användaren kan lägga till kategori-->
 
-    <div class="container max-w-screen-sm mt-5">
+    <div class="container max-w-screen-sm mt-5 mb-7">
         <h2 class="font-headings text-xxl text-center md:text-left mb-5 font-bold">Lägg till kategori</h2>
 
         <!--Formulär. Anropar metoden addCategory-->
@@ -20,7 +20,7 @@
 
 
                 <!--Kategorins namn-->
-                <div class="mt-5 md:w-3/5">
+                <div class="mt-5 w-full">
                     <label class="font-bold font-headings" for="name">Namn </label><i
                         class="fa-solid fa-pencil fa-2xs text-medium-color"></i><br>
                     <input v-model="categoryname" type="text" id="namn" name="namn"
@@ -32,7 +32,7 @@
                 </div>
 
                 <!--Kategorins beskrivning-->
-                <div class="mt-5 md:w-4/5">
+                <div class="mt-5 w-full">
                     <label for="description" class="font-bold font-headings">Beskrivning:</label>
                     <i class="fa-solid fa-pencil fa-2xs text-medium-color"></i><br>
                     <textarea id="description" name="description" v-model="categorydescription" rows="4" cols="80"
@@ -44,7 +44,7 @@
                 </div>
 
                 <!--Knapp för att lägga till-->
-                <div class="mt-20">
+                <div>
                     <button
                         class="bg-dark-color p-3 font-headings font-bold rounded-md shadow-md text-main-color hover:bg-medium-color"
                         type="submit">Lägg till
@@ -121,9 +121,11 @@ export default {
 button {
     max-width: 200px;
     width: 100%;
+    margin: 3rem auto;
+    display: block;
 }
 
 textarea {
-    max-width: 90%;
+    max-width: 100%;
 }
 </style>

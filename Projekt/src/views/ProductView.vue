@@ -103,7 +103,6 @@ export default {
             const data = await resp.json();
             this.products = data;
 
-            console.log(this.products);
 
             //Kollar om det finns några produkter sparade och skriver annars ut meddelande
             if (this.products.length === 0) {

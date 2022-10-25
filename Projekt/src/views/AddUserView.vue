@@ -6,7 +6,7 @@
  * @Last Modified time: 2022-10-24 16:40:13 
  */
 -->
-    <div class="container max-w-screen-md mt-5">
+    <div class="container max-w-screen-sm mt-5">
         <h2 class="font-headings text-xxl text-center md:text-left mb-5 font-bold">Lägg till en användare</h2>
         <div class="border-solid border-2 p-5 bg-white shadow-sm">
 
@@ -21,7 +21,7 @@
                 <div class="flex flex-col justify-center">
                     <div>
                         <!--Användarens namn-->
-                        <div class="mt-5 w-full md:w-3/4">
+                        <div class="mt-5 w-full">
                             <label class="font-bold font-headings" for="username">Namn </label><br>
                             <input v-model="name" type="text" id="username" name="username"
                                 class="border-solid border border-slate-400 shadow-sm w-full bg-white p-1">
@@ -32,7 +32,7 @@
                         </div>
 
                         <!--Användarens mailadress-->
-                        <div class="mt-5 w-full md:w-3/4">
+                        <div class="mt-5 w-full">
                             <label class="font-bold font-headings" for="email">Mailadress</label><br>
                             <input v-model="email" type="email" id="email" name="email"
                                 class="border-solid border border-slate-400 shadow-sm w-full bg-white p-1">
@@ -44,7 +44,7 @@
                         <div>
 
                             <!--Användarens lösenord-->
-                            <div class="mt-5 w-full md:w-3/4">
+                            <div class="mt-5 w-full">
                                 <label class="font-bold font-headings" for="password">Lösenord</label><br>
                                 <input v-model="password" type="password" id="password" name="password"
                                     class="border-solid border border-slate-400 shadow-sm w-full bg-white p-1">
@@ -57,7 +57,7 @@
 
 
                         <!--Upprepa lösenord-->
-                        <div class="mt-5 w-full md:w-3/4">
+                        <div class="mt-5 w-full">
                             <label class="font-bold font-headings" for="verified">Upprepa lösenord</label><br>
                             <input v-model="verifiedPassword" type="password" id="verified" name="verified"
                                 class="border-solid border border-slate-400 shadow-sm w-full bg-white p-1">

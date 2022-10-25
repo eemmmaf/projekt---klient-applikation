@@ -247,7 +247,6 @@ export default {
             });
             const data = await resp.json();
             this.categories = data;
-            console.log(this.categories);
         },
         //Metod för att öka antal produkter i lager
         increaseQ() {

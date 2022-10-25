@@ -21,7 +21,7 @@
             <td>
                 <!--Länk till enskild produkt-->
                 <Router-link class="text-dark-color" :to="{name: 'singleproduct', params: { id: product.id } }"><i
-                        class="fa-xl fa-solid fa-pen"></i></Router-link>
+                        class="fa-xl fa-solid fa-pen hover:text-medium-color"></i></Router-link>
             </td>
             <!--Knapp för att ta bort-->
             <td @click="$emit('delete')"><i class="fa-xl fa-solid fa-trash cursor-pointer text-dark-color"></i></td>

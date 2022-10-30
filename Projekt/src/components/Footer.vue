@@ -1,19 +1,16 @@
 <!--/*
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-10-24 16:40:13 
- * @Last Modified by:   Emma Forslund - emfo2102 
- * @Last Modified time: 2022-10-24 16:40:13 
  */
 -->
 
 <template>
     <!--Koll om användaren är på login-sidan -->
-    <div v-if="$route.name!=='login'">
+    <div v-if="$route.name !== 'login'">
         <footer class="bg-white mt-11 shadow-md border-solid border-2 border-light-pink text-center">
             <div class="flex flex-row text-dark-color justify-center">
                 <p class="text-dark font-content">DT193G - Emma Forslund - emfo2102@student.miun.se</p>
             </div>
-
         </footer>
     </div>
 </template>

@@ -2,10 +2,11 @@
     <!--/*
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-10-24 16:40:13 
- * @Last Modified by:   Emma Forslund - emfo2102 
- * @Last Modified time: 2022-10-24 16:40:13 
  */
 -->
+
+    <!--Vy för att lägga till en användare-->
+
     <div class="container max-w-screen-sm mt-5">
         <h2 class="font-headings text-xxl text-center md:text-left mb-5 font-bold">Lägg till en användare</h2>
         <div class="border-solid border-2 p-5 bg-white shadow-sm">
@@ -14,7 +15,7 @@
             <form class="mt-2" @submit.prevent="addUser()">
                 <!--Meddelande om användare läggs till-->
                 <div class="text-center mb-5 text-base font-content font-bold text-dark-color" v-if="success">
-                    {{success}} <i class="fa-solid fa-circle-check text-green-600"></i>
+                    {{ success }} <i class="fa-solid fa-circle-check text-green-600"></i>
                 </div>
 
 
@@ -27,7 +28,7 @@
                                 class="border-solid border border-slate-400 shadow-sm w-full bg-white p-1">
                             <!-- Kontroll om felmeddelande och skriver ut om fel -->
                             <div class=" text-error font-bold font-content" v-if="nameError">
-                                <span>{{nameError}}</span>
+                                <span>{{ nameError }}</span>
                             </div>
                         </div>
 
@@ -38,7 +39,7 @@
                                 class="border-solid border border-slate-400 shadow-sm w-full bg-white p-1">
                             <!-- Kontroll om felmeddelande och skriver ut om fel -->
                             <div class=" text-error font-bold font-content" v-if="emailError">
-                                <span>{{emailError}}</span>
+                                <span>{{ emailError }}</span>
                             </div>
                         </div>
                         <div>
@@ -50,7 +51,7 @@
                                     class="border-solid border border-slate-400 shadow-sm w-full bg-white p-1">
                                 <!-- Kontroll om felmeddelande och skriver ut om fel -->
                                 <div class=" text-error font-bold font-content" v-if="passwordError">
-                                    <span>{{passwordError}}</span>
+                                    <span>{{ passwordError }}</span>
                                 </div>
                             </div>
                         </div>
@@ -64,11 +65,11 @@
 
                             <!-- Kontroll om felmeddelande och skriver ut om fel -->
                             <div class=" text-error font-bold font-content" v-if="passwordVerifyError">
-                                <span>{{passwordVerifyError}}</span>
+                                <span>{{ passwordVerifyError }}</span>
                             </div>
                             <!-- Kontroll om felmeddelande och skriver ut om fel -->
                             <div class=" text-error font-bold font-content" v-if="verifiedError">
-                                <span>{{verifiedError}}</span>
+                                <span>{{ verifiedError }}</span>
                             </div>
                         </div>
                     </div>
@@ -90,6 +91,7 @@
 </template>
 
 <script>
+
 export default {
     data() {
         return {
@@ -172,6 +174,20 @@ export default {
                 this.verifiedError = "Lösenorden matchar inte."
                 this.passwordError = "";
                 this.passwordVerifyError = "";
+                this.nameError = "";
+                this.emailError = "";
+
+                //Felmeddelanden
+                if (!this.name) {
+                    this.nameError = "Fyll i namn";
+                }
+                if (!this.email) {
+                    this.emailError = "Fyll i en giltig mailadress";
+                }
+                if (!this.password) {
+                    this.passwordError = "Fyll i ett lösenord";
+                }
+
             }
         }
     }

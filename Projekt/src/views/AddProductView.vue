@@ -10,7 +10,8 @@
     <!--View för att lägga till produkt-->
 
     <div class="container max-w-screen-md mt-5 mb-8">
-        <h2 class="font-headings text-xxl text-center md:text-left mb-5 font-bold text-dark-color">Lägg till produkt</h2>
+        <h2 class="font-headings text-xxl text-center md:text-left mb-5 font-bold text-dark-color">Lägg till produkt
+        </h2>
 
         <!--Skriver ut felmeddelande med alla fel -->
         <div class="border-solid border border-error p-4 md:max-w-xs mb-5 bg-white shadow-md" v-if="error.length">
@@ -18,7 +19,7 @@
             <ul class="list-disc list-inside text-error">
                 <!--Loopar igenom fel och skriver ut-->
                 <li class="mt-1" v-for="e in error" v-bind:key="e.id">
-                    {{e}}</li>
+                    {{ e }}</li>
             </ul>
         </div>
 
@@ -31,7 +32,7 @@
                     <div>
                         <!--Skriver ut meddelande om produkten läggs till-->
                         <div class="text-base font-content font-bold text-dark-color" v-if="success">
-                            {{success}} <i class="fa-solid fa-circle-check text-green-600"></i>
+                            {{ success }} <i class="fa-solid fa-circle-check text-green-600"></i>
                         </div>
 
                         <!--Produktens namn-->
@@ -42,7 +43,7 @@
                                 class="border-solid border border-slate-400 shadow-sm w-full bg-white p-1">
                             <!-- Kontroll om felmeddelande och skriver ut om fel -->
                             <div class=" text-error font-bold font-content" v-if="nameError">
-                                <span>{{nameError}}</span>
+                                <span>{{ nameError }}</span>
                             </div>
                         </div>
 
@@ -54,7 +55,7 @@
                                 class="border-solid border border-slate-400 shadow-sm w-full bg-white p-1">
                             <!-- Kontroll om felmeddelande och skriver ut om fel -->
                             <div class=" text-error font-bold font-content" v-if="shelfError">
-                                <span>{{shelfError}}</span>
+                                <span>{{ shelfError }}</span>
                             </div>
                         </div>
 
@@ -66,7 +67,7 @@
                                 class="border-solid border border-slate-400 shadow-sm w-full bg-white p-1">
                             <!-- Kontroll om felmeddelande och skriver ut om fel -->
                             <div class=" text-error font-bold font-content" v-if="priceError">
-                                <span>{{priceError}}</span>
+                                <span>{{ priceError }}</span>
                             </div>
                         </div>
 
@@ -85,7 +86,7 @@
 
                             <!--Felmeddelande-->
                             <div class=" text-error font-bold font-content" v-if="categoryError">
-                                <span>{{categoryError}}</span>
+                                <span>{{ categoryError }}</span>
                             </div>
                         </div>
 
@@ -97,7 +98,7 @@
                                 class="border-solid border border-slate-400 shadow-sm bg-white p-1"></textarea>
                             <!-- Kontroll om felmeddelande och skriver ut om fel -->
                             <div class=" text-error font-bold font-content" v-if="descriptionError">
-                                <span>{{descriptionError}}</span>
+                                <span>{{ descriptionError }}</span>
                             </div>
                         </div>
                     </div>
@@ -105,6 +106,7 @@
                     <!--Antal i lager-->
                     <div class="text-center md:text-left mt-5">
                         <label class="font-headings font-bold text-xl mx-3" for="price">Antal i lager</label><br>
+
                         <!--Minus-->
                         <div class="flex justify-center md:justify-between mt-3">
                             <!--Anropar funktionen som minskar antal-->
@@ -112,13 +114,15 @@
                                 class="fa-solid fa-circle-minus fa-3x text-dark-color cursor-pointer hover:text-medium-color"></i>
                             <input v-model="quantity" type="text" id="price" name="price"
                                 class="border-solid border border-slate-400 shadow-sm bg-white w-11 mx-4 text-center">
+
                             <!--Anropar funktionen som ökar antal-->
                             <i @click="increaseQ(quantity)"
                                 class="fa-solid fa-circle-plus fa-3x text-dark-color cursor-pointer hover:text-medium-color"></i>
                         </div>
+
                         <!-- Kontroll om felmeddelande och skriver ut om fel -->
                         <div class=" text-error font-bold font-content mt-3" v-if="quantityError">
-                            <span>{{quantityError}}</span>
+                            <span>{{ quantityError }}</span>
                         </div>
 
                         <!--Knapp för att lägga till-->
@@ -163,7 +167,7 @@ export default {
         //Lägger till produkt
         async addProduct() {
             this.token = localStorage.getItem('token');
-            if (this.name && this.description && this.price && this.price && this.category_id && this.shelf != "") {
+            if (this.name && this.description && this.price && this.price && this.category_id && this.shelf && this.quantity != "") {
                 let createdBody = {
                     name: this.name,
                     description: this.description,
@@ -225,6 +229,12 @@ export default {
                 if (!this.price) {
                     this.error.push("Pris måste fyllas i");
                     this.priceError = "Fyll i pris";
+                }
+
+                //Felmeddelande för antal medlemmar
+                if (this.quantity == "") {
+                    this.error.push("Antal produkter måste väljas");
+                    this.quantityError = "Antal produkter måste väljas";
                 }
 
                 //Felmeddelande för hyllplats

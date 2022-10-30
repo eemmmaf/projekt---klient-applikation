@@ -9,7 +9,7 @@
 
     <!--View för att logga in-->
 
-    <div class="">
+    <div>
         <!--Formulär för att logga in-->
         <form
             class="shadow-lg py-8 px-7 bg-white md:max-w-md md:container rounded text-dark-color border-solid border-2 border-main-color">
@@ -130,9 +130,8 @@ export default {
 </script>
 
 <style scoped>
-form{
-display: block;
-margin:8rem auto auto auto;
+form {
+    display: block;
+    margin: 8rem auto auto auto;
 }
-
 </style>

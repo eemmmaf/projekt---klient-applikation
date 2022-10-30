@@ -29,7 +29,9 @@
 </template>
 
 <script>
+
 export default {
+    emits: ["delete"],
     props: {
         product: Object
     }

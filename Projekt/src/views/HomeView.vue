@@ -1,10 +1,7 @@
 <template>
-    <!--/*
+ <!--/*
  * @Author: Emma Forslund - emfo2102 
  * @Date: 2022-10-24 16:40:13 
- * @Last Modified by:   Emma Forslund - emfo2102 
- * @Last Modified time: 2022-10-24 16:40:13 
- */
 -->
 
     <!--View för startsidan-->
@@ -54,6 +51,7 @@
 </template>
 
 <script>
+
 //Importerar komponenter 
 import Userinfo from '../components/Userinfo.vue';
 import LatestProducts from '../components/LatestProducts.vue';
@@ -75,12 +73,6 @@ export default {
         LatestProducts
     },
     methods: {
-        //Metod för att hämta dagens datum. 
-        currentDate() {
-            const current = new Date();
-            const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
-            return date;
-        },
         //Hämtar alla produkter
         async getProducts() {
             this.token = localStorage.getItem('token');
@@ -103,11 +95,6 @@ export default {
 
             //Räknar hur många produkter som är lagrade och lagrar i result
             this.result = this.products.length;
-
-            //Kollar om det finns några produkter sparade och skriver annars ut meddelande
-            if (this.products.length === 0) {
-                this.emptyMsg = "Det finns inga lagrade produkter."
-            };
         },
         //Hämtar alla kategorier
         async getCategories() {
@@ -122,7 +109,7 @@ export default {
             const data = await resp.json();
             this.categories = data;
             this.catResult = this.categories.length;
-        },
+        }
     },
     mounted() {
         this.getProducts();

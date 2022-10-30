@@ -21,18 +21,18 @@
 
                 <!--Skriver ut meddelande om produkten uppdateras-->
                 <div class="text-base font-content font-bold text-dark-color mb-5" v-if="success">
-                    {{success}} <i class="fa-solid fa-circle-check text-green-600"></i>
+                    {{ success }} <i class="fa-solid fa-circle-check text-green-600"></i>
                 </div>
 
                 <!--Information om tid-->
                 <div class="flex flex-col justify-end mb-8 md:justify-between md:flex-row ">
                     <div>
-                        <h3 class="font-bold">Skapad</h3>
-                        <p class="text-dark-color text-sm">{{formatDate(product.created_at)}}</p>
+                        <h3 class="font-bold font-headings text-sm">Skapad</h3>
+                        <p class="text-dark-color text-sm font-content">{{ formatDate(product.created_at) }}</p>
                     </div>
                     <div>
-                        <h3 class="font-bold">Senast uppdaterad</h3>
-                        <p class="text-dark-color text-sm">{{formatDate(product.updated_at)}}</p>
+                        <h3 class="font-bold font-headings text-sm">Senast uppdaterad</h3>
+                        <p class="text-dark-color text-sm font-content">{{ formatDate(product.updated_at) }}</p>
                     </div>
                 </div>
 
@@ -54,7 +54,7 @@
                                 class="border-solid border border-slate-400 shadow-sm w-full bg-white p-1">
                             <!-- Kontroll om felmeddelande och skriver ut om fel -->
                             <div class=" text-error font-bold font-content" v-if="nameError">
-                                <span>{{nameError}}</span>
+                                <span>{{ nameError }}</span>
                             </div>
                         </div>
 
@@ -66,7 +66,7 @@
                                 class="border-solid border border-slate-400 shadow-sm w-full bg-white p-1">
                             <!-- Kontroll om felmeddelande och skriver ut om fel -->
                             <div class=" text-error font-bold font-content" v-if="shelfError">
-                                <span>{{shelfError}}</span>
+                                <span>{{ shelfError }}</span>
                             </div>
                         </div>
 
@@ -78,7 +78,7 @@
                                 class="border-solid border border-slate-400 shadow-sm w-full bg-white p-1">
                             <!-- Kontroll om felmeddelande och skriver ut om fel -->
                             <div class=" text-error font-bold font-content" v-if="priceError">
-                                <span>{{priceError}}</span>
+                                <span>{{ priceError }}</span>
                             </div>
                         </div>
 
@@ -96,7 +96,7 @@
 
                             <!-- Kontroll om felmeddelande och skriver ut om fel -->
                             <div class=" text-error font-bold font-content" v-if="categoryError">
-                                <span>{{categoryError}}</span>
+                                <span>{{ categoryError }}</span>
                             </div>
                         </div>
 
@@ -109,7 +109,7 @@
                                 class="border-solid border border-slate-400 shadow-sm bg-white p-1"></textarea>
                             <!-- Kontroll om felmeddelande och skriver ut om fel -->
                             <div class=" text-error font-bold font-content" v-if="descriptionError">
-                                <span>{{descriptionError}}</span>
+                                <span>{{ descriptionError }}</span>
                             </div>
                         </div>
                     </div>
@@ -126,6 +126,10 @@
                             <!--Plus-knapp-->
                             <i @click="increaseQ(product.quantity)"
                                 class="fa-solid fa-circle-plus fa-3x text-dark-color cursor-pointer hover:text-medium-color"></i>
+                        </div>
+                        <!-- Kontroll om felmeddelande och skriver ut om fel -->
+                        <div class=" text-error font-bold font-content" v-if="quantityError">
+                            <span>{{ quantityError }}</span>
                         </div>
 
                         <!--Knapp för att uppdatera-->
@@ -150,6 +154,7 @@
 </template>
 
 <script>
+
 export default {
     props: ['id'],
     data() {
@@ -174,7 +179,6 @@ export default {
             token: ""
         }
     },
-
     methods: {
         //Metod för att öka antal produkter i lager
         increaseQ() {
@@ -188,7 +192,7 @@ export default {
         //Uppdaterar produkt
         async updateProduct(product) {
             this.token = localStorage.getItem('token');
-            if (product.name && product.description && product.price && product.price && product.category_id && product.shelf != "") {
+            if (product.name && product.description && product.price && product.quantity && product.category_id && product.shelf != "") {
                 let updatedBody = {
                     id: this.id,
                     name: product.name,
@@ -216,6 +220,7 @@ export default {
                 this.descriptionError = "";
                 this.priceError = "";
                 this.shelfError = "";
+                this.quantityError = "";
             }
             else {
                 //Gör meddelandena tomma by default
@@ -225,6 +230,7 @@ export default {
                 this.priceError = "";
                 this.success = "";
                 this.shelfError = "";
+                this.quantityError = "";
 
                 //Felmeddelande för namn
                 if (!product.name) {
@@ -242,6 +248,12 @@ export default {
                 if (!product.price) {
                     this.priceError = "Fyll i pris";
                 }
+
+                //Felmeddelande för antal medlemmar
+                if (product.quantity == "") {
+                    this.quantityError = "Antal produkter måste väljas";
+                }
+
                 //Felmeddelande för hyllplats
                 if (!product.shelf) {
                     this.shelfError = "Fyll i hyllplats";
@@ -265,7 +277,7 @@ export default {
 
         //Metod för att formatera om datum
         formatDate(date) {
-            const options = {  day: 'numeric',  month: 'long', year: 'numeric' }
+            const options = { day: 'numeric', month: 'long', year: 'numeric' }
             return new Date(date).toLocaleTimeString('sv', options)
         },
     },

@@ -61,10 +61,6 @@ export default {
         //Funktion för att logga ut. Anropas på knappen logga ut
         async logOut() {
             this.token = localStorage.getItem('token');
-            let body = {
-                email: this.email,
-                password: this.password
-            };
             //Fetch-anrop med metoden POST
             const resp = await fetch("http://localhost:8000/api/logout", {
                 method: "POST",
@@ -73,12 +69,9 @@ export default {
                     "Content-type": "application/json",
                     "Authorization": "Bearer " + this.token
                 },
-                body: JSON.stringify(body)
             }
             );
-            const data = await resp.json();
-
-
+            
             //Tömmer localstorage
             localStorage.clear();
 

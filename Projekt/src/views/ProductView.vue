@@ -15,6 +15,7 @@
         <div v-if="deleted">
             <p class="font-content text-center mt-5 text-base">{{deleted}}</p>
         </div>
+        
         <!--Knapp för att visa olika alternativ för sortering-->
         <button @click='toggle = !toggle' class="p-2 border-solid border-2 border-light-pink bg-white font-content mt-3 ml-1">Sortera <i
                 class="fa-solid fa-chevron-down"></i></button>
@@ -71,6 +72,7 @@
 </template>
 
 <script>
+
 //Importerar komponenten Product
 import Product from '../components/Product.vue';
 
